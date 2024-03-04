@@ -4,23 +4,50 @@ using UnityEngine;
 
 public class Abilities : MonoBehaviour {
     public GameObject ground;
+    public GameObject cooldown;
     Material material;
 
     bool unblind = false;
+    bool charged = true;
     void Start() {
         material = ground.GetComponent<Renderer>().material;
+        cooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
     }
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetButtonDown("Fire1") && !unblind) StartCoroutine(ability());
-        if(unblind) material.color = Color.white;
+        if (unblind) material.color = Color.white;
         else material.color = Color.black;
+        if (Mathf.Approximately(cooldown.transform.localScale.x,  0)) charged = true; else charged = false;
+        if (Input.GetButtonDown("Fire2") && charged) {
+            charged = false;
+            StartCoroutine(ability());
+        }
     }
 
     private IEnumerator ability() {
         unblind = true;
+        charged = false;
         yield return new WaitForSeconds(4);
+        cooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         unblind = false;
+        StartCoroutine(ScaleOverTime(cooldown, 4));
+    }
+
+    private IEnumerator ScaleOverTime(GameObject ability, float duration) {
+        charged = false;
+        var startScale = ability.transform.localScale;
+        var endScale = new Vector3(0, ability.transform.localScale.y, ability.transform.localScale.z);
+        var elapsed = 0f;
+
+        while (elapsed < duration) {
+            var t = elapsed / duration;
+            ability.transform.localScale = Vector3.Lerp(startScale, endScale, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        ability.transform.localScale = endScale;
+        charged = true;
     }
 }
