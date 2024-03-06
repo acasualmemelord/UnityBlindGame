@@ -22,7 +22,6 @@ public class EnemySystem : MonoBehaviour {
         if (lookat) {
             transform.LookAt(player.transform);
             Vector3 v = rb.velocity;
-            Debug.Log(v);
             if(!PlayerDetection.found && v.x > -2 && v.x < 2 && v.z > -2 && v.z < 2) {
                 rb.AddForce(speed * multiplier * Time.deltaTime * transform.forward);
             }
