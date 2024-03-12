@@ -6,6 +6,8 @@ public class Abilities : MonoBehaviour {
     public GameObject ground;
     public GameObject cooldown;
     Material material;
+    public Material noReflection;
+    public Material Reflection;
 
     bool unblind = false;
     bool charged = true;
@@ -16,8 +18,8 @@ public class Abilities : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (unblind) material.color = Color.white;
-        else material.color = Color.black;
+        if (unblind) ground.GetComponent<MeshRenderer>().material = Reflection;
+        else ground.GetComponent<MeshRenderer>().material = noReflection;
         if (Mathf.Approximately(cooldown.transform.localScale.x,  0)) charged = true; else charged = false;
         if (Input.GetButtonDown("Fire2") && charged) {
             charged = false;
