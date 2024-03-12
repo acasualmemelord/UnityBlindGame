@@ -16,7 +16,6 @@ public class Abilities : MonoBehaviour {
         cooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
     }
 
-    // Update is called once per frame
     void Update() {
         if (unblind) ground.GetComponent<MeshRenderer>().material = Reflection;
         else ground.GetComponent<MeshRenderer>().material = noReflection;

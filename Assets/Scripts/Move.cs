@@ -13,7 +13,6 @@ public class Move : MonoBehaviour {
         hit = this.transform.GetChild(0).GetChild(0).GetComponent<Hit>();
     }
 
-    // Update is called once per frame
     void Update() {
         rb.AddForce(speed * multiplier * transform.forward);
         Collider c = hit.colliderStatus;
