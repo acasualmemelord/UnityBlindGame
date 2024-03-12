@@ -9,6 +9,7 @@ public class EnemySystem : MonoBehaviour {
     public float speed = 3f;
     public float multiplier = 1f;
     public float speedLimit = 2f;
+    public int hp = 100;
     
     private void Start() {
         rb = GetComponent<Rigidbody>();
@@ -16,6 +17,7 @@ public class EnemySystem : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (hp <= 0) Destroy(gameObject);
         if (PlayerDetection.found) {
             lookat = true;
         }

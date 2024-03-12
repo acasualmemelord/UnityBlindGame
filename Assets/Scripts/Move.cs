@@ -18,9 +18,11 @@ public class Move : MonoBehaviour {
         rb.AddForce(speed * multiplier * transform.forward);
         Collider c = hit.colliderStatus;
         if (c && c.tag != "Invisible" && c.tag != "Player") {
-            Debug.Log(c.name);
             if (c.name == "EnemyBody") {
-                c.gameObject.transform.parent.gameObject.GetComponent<Rigidbody>().AddForce(10f * c.transform.forward);
+                GameObject enemy = c.gameObject.transform.parent.gameObject;
+                enemy.GetComponent<Rigidbody>().AddForce(1000f * transform.forward);
+                enemy.GetComponent<EnemySystem>().hp -= 25;
+                Debug.Log(enemy.GetComponent<EnemySystem>().hp);
             }
             Destroy(gameObject);
         }
