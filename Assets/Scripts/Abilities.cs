@@ -3,26 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Abilities : MonoBehaviour {
-    public GameObject ground;
+    public GameObject RoomGenerator;
     public GameObject cooldown;
-    Material material;
     public Material noReflection;
     public Material Reflection;
 
     bool unblind = false;
     bool charged = true;
     void Start() {
-        material = ground.GetComponent<Renderer>().material;
         cooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
     }
 
     void Update() {
-        if (unblind) ground.GetComponent<MeshRenderer>().material = Reflection;
-        else ground.GetComponent<MeshRenderer>().material = noReflection;
-        if (Mathf.Approximately(cooldown.transform.localScale.x,  0)) charged = true; else charged = false;
+        if (unblind) setMaterial(Reflection);
+        else setMaterial(noReflection);
+        if (Mathf.Approximately(cooldown.transform.localScale.x, 0)) charged = true; else charged = false;
         if (Input.GetButtonDown("Fire2") && charged) {
             charged = false;
             StartCoroutine(ability());
+        }
+    }
+
+    void setMaterial(Material material) {
+
+        foreach (Transform room in RoomGenerator.transform) {
+            Transform floorParent = room.GetChild(0);
+            Transform floor = floorParent.transform.GetChild(0);
+            floor.transform.GetComponent<MeshRenderer>().material = material;
         }
     }
 
