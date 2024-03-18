@@ -12,6 +12,7 @@ public class Abilities : MonoBehaviour {
     bool charged = true;
     void Start() {
         cooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update() {
