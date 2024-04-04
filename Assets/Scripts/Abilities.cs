@@ -5,6 +5,7 @@ using UnityEngine;
 public class Abilities : MonoBehaviour {
     public GameObject RoomGenerator;
     public GameObject cooldown;
+    public PlayerStats playerStats;
     public Material noReflection;
     public Material Reflection;
 
@@ -19,14 +20,13 @@ public class Abilities : MonoBehaviour {
         if (unblind) setMaterial(Reflection);
         else setMaterial(noReflection);
         if (Mathf.Approximately(cooldown.transform.localScale.x, 0)) charged = true; else charged = false;
-        if (Input.GetButtonDown("Fire2") && charged) {
+        if (Input.GetButtonDown("Fire2") && charged && playerStats.use(20)) {
             charged = false;
             StartCoroutine(ability());
         }
     }
 
     void setMaterial(Material material) {
-
         foreach (Transform room in RoomGenerator.transform) {
             Transform floorParent = room.GetChild(0);
             Transform floor = floorParent.transform.GetChild(0);
@@ -37,9 +37,11 @@ public class Abilities : MonoBehaviour {
     private IEnumerator ability() {
         unblind = true;
         charged = false;
+        playerStats.recharging = false;
         yield return new WaitForSeconds(4);
         cooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         unblind = false;
+        playerStats.recharging = true;
         StartCoroutine(ScaleOverTime(cooldown, 4));
     }
 
