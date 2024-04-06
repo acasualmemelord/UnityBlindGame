@@ -20,7 +20,7 @@ public class Abilities : MonoBehaviour {
         if (unblind) setMaterial(Reflection);
         else setMaterial(noReflection);
         if (Mathf.Approximately(cooldown.transform.localScale.x, 0)) charged = true; else charged = false;
-        if (Input.GetButtonDown("Fire2") && charged && playerStats.use(20)) {
+        if (Input.GetButtonDown("Fire2") && charged && playerStats.Use(20)) {
             charged = false;
             StartCoroutine(ability());
         }

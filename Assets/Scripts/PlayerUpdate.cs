@@ -9,15 +9,15 @@ public class PlayerUpdate : MonoBehaviour
     public Transform manaBar;
 
     void Update() {
-        healthBar.localScale = new Vector3(playerStats.health / 100f, 0.5f, 1f);
-        manaBar.localScale = new Vector3(playerStats.mana / 100f, 0.5f, 1f);
+        healthBar.localScale = new Vector3(playerStats.stats[StatNames.Health] / playerStats.stats[StatNames.MaxHealth], 0.5f, 1f);
+        manaBar.localScale = new Vector3(playerStats.stats[StatNames.Mana] / playerStats.stats[StatNames.MaxMana], 0.5f, 1f);
 
-        if (playerStats.health < 100) playerStats.health += playerStats.healthRegen;
-        else if (playerStats.health > 100) playerStats.health = 100;
+        if (playerStats.stats[StatNames.Health] < 100) playerStats.Heal(playerStats.stats[StatNames.HealthRegen]);
+        else if (playerStats.stats[StatNames.Health] > 100) playerStats.stats[StatNames.Health] = 100;
 
         if (playerStats.recharging) {
-            if (playerStats.mana < 100) playerStats.mana += playerStats.manaRegen;
-            else if (playerStats.mana > 100) playerStats.mana = 100;
+            if (playerStats.stats[StatNames.Mana] < 100) playerStats.stats[StatNames.Mana] += playerStats.stats[StatNames.ManaRegen];
+            else if (playerStats.stats[StatNames.Mana] > 100) playerStats.stats[StatNames.Mana] = 100;
         }
     }
 }
