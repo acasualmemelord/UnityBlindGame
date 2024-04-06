@@ -8,12 +8,13 @@ using UnityEditor;
 public class PlayerStats : ScriptableObject {
     public Stats stats = new();
 
+    public float attackManaCost = 1;
     public bool recharging = false;
 
     //lose health
     public bool Damage (float amount) {
         if (amount > stats[StatNames.Health]) stats[StatNames.Health] = 0;
-        stats[StatNames.Health] -= amount;
+        stats[StatNames.Health] -= Mathf.Min(amount, 1);
         return true;
     }
 
@@ -28,6 +29,7 @@ public class PlayerStats : ScriptableObject {
     public bool Use (float amount) {
         if(amount > stats[StatNames.Mana]) return false;
         stats[StatNames.Mana] -= amount;
+        recharging = false;
         return true;
     }
 
@@ -35,6 +37,7 @@ public class PlayerStats : ScriptableObject {
     public bool Infuse (float amount) {
         if (stats[StatNames.Mana] == stats[StatNames.MaxMana]) return false;
         stats[StatNames.Mana] = Mathf.Min(stats[StatNames.Mana] + amount, stats[StatNames.MaxMana]);
+        recharging = true;
         return true;
     }
 }

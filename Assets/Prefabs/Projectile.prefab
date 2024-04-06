@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8448364865243196923}
   - component: {fileID: 2451473608678659745}
   - component: {fileID: 3805155972918516645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6870103262268287674}
   - component: {fileID: 7118997065233182530}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Directional Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 222104992836322255}
   - component: {fileID: 7459773310129184720}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Directional Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2838293759747631916}
   - component: {fileID: 3807253765086441066}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Directional Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 6018829864008909321}
   - component: {fileID: 905958128301002842}
   - component: {fileID: 5206557028118001859}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da33e6e851ebda64981b45a4eee33a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderStatus: 
+  colliderStatus: {fileID: 0}
 --- !u!1 &7592491236739419481
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6275882187321167468}
   - component: {fileID: 3293705915494280382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 8272707353938710116}
   - component: {fileID: 1199260980452211808}
   - component: {fileID: 8854946567050183594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,3 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46298a75b71a04d47b203e6af6ee9746, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
+  stats:
+    list:
+    - Key: 0
+      Value: 89.3059
+    - Key: 1
+      Value: 100
+    - Key: 2
+      Value: 0.25
+    - Key: 3
+      Value: 10
+    - Key: 4
+      Value: 5
+    - Key: 5
+      Value: 0.5
+    - Key: 6
+      Value: 10
+    - Key: 7
+      Value: 80
+    - Key: 8
+      Value: 100
+    - Key: 9
+      Value: 0.1
+    - Key: 10
+      Value: 10
+    - Key: 11
+      Value: 10
+    - Key: 12
+      Value: 12
+    - Key: 13
+      Value: 1.5
+    - Key: 14
+      Value: 3
+    - Key: 15
+      Value: 100
+    - Key: 16
+      Value: 0.25
+    - Key: 17
+      Value: 15
+    keyCollision: 0
+  recharging: 0

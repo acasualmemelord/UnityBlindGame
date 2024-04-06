@@ -8,6 +8,8 @@ public enum StatNames {
     MaxHealth,
     HealthRegen,
     Attack,
+    AttackRadius,
+    AttackInterval,
     Defense,
 
     //magic stats

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerUpdate : MonoBehaviour
-{
+public class PlayerUpdate : MonoBehaviour {
     public PlayerStats playerStats;
     public Transform healthBar;
     public Transform manaBar;
@@ -12,7 +11,7 @@ public class PlayerUpdate : MonoBehaviour
         healthBar.localScale = new Vector3(playerStats.stats[StatNames.Health] / playerStats.stats[StatNames.MaxHealth], 0.5f, 1f);
         manaBar.localScale = new Vector3(playerStats.stats[StatNames.Mana] / playerStats.stats[StatNames.MaxMana], 0.5f, 1f);
 
-        if (playerStats.stats[StatNames.Health] < 100) playerStats.Heal(playerStats.stats[StatNames.HealthRegen]);
+        if (playerStats.stats[StatNames.Health] < 100) playerStats.Heal(playerStats.stats[StatNames.HealthRegen] * Time.deltaTime);
         else if (playerStats.stats[StatNames.Health] > 100) playerStats.stats[StatNames.Health] = 100;
 
         if (playerStats.recharging) {
