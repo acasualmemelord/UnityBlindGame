@@ -1520,6 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b8373b12a64fa428e4844e928374a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
   projectile: {fileID: 8125436370720696565, guid: 66924ae80aafef646a5a06bcbfc8996c, type: 3}
   point: {fileID: 107769144}
   userCamera: {fileID: 963194225}

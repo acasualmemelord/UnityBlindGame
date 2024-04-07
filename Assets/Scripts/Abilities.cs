@@ -37,11 +37,9 @@ public class Abilities : MonoBehaviour {
     private IEnumerator ability() {
         unblind = true;
         charged = false;
-        playerStats.recharging = false;
         yield return new WaitForSeconds(4);
         cooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         unblind = false;
-        playerStats.recharging = true;
         StartCoroutine(ScaleOverTime(cooldown, 4));
     }
 

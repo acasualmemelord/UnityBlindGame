@@ -33,7 +33,7 @@ MonoBehaviour:
     - Key: 8
       Value: 100
     - Key: 9
-      Value: 0.1
+      Value: 1
     - Key: 10
       Value: 10
     - Key: 11
@@ -51,4 +51,6 @@ MonoBehaviour:
     - Key: 17
       Value: 15
     keyCollision: 0
+  attackManaCost: 1
+  regenerating: 0
   recharging: 0

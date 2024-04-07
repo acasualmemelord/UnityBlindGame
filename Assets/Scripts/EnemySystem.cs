@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class EnemySystem : MonoBehaviour {
     bool lookat = false;
     public GameObject player;
     Rigidbody rb;
-    public float speed = 3f;
-    public float multiplier = 1f;
-    public float speedLimit = 2f;
-    public int hp = 100;
+    public EnemyStats enemyStats;
     
     private void Start() {
         rb = GetComponent<Rigidbody>();
@@ -17,15 +15,15 @@ public class EnemySystem : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (hp <= 0) Destroy(gameObject);
+        if (enemyStats.stats[StatNames.Health] <= 0) Destroy(gameObject);
         if (PlayerDetection.found) {
             lookat = true;
         }
         if (lookat) {
             transform.LookAt(player.transform);
             Vector3 v = rb.velocity;
-            if(!PlayerDetection.found && v.x > -2 && v.x < 2 && v.z > -2 && v.z < 2) {
-                rb.AddForce(speed * multiplier * Time.deltaTime * transform.forward);
+            if(!PlayerDetection.found && v.x > -enemyStats.stats[StatNames.Speed] && v.x < enemyStats.stats[StatNames.Speed] && v.z > -enemyStats.stats[StatNames.Speed] && v.z < enemyStats.stats[StatNames.Speed]) {
+                rb.AddForce(enemyStats.stats[StatNames.Speed] * Time.deltaTime * transform.forward);
             }
         }
     }
