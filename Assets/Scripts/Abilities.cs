@@ -1,32 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class Abilities : MonoBehaviour {
     public GameObject RoomGenerator;
-    public GameObject cooldown;
+
+    public GameObject meditateCooldown;
+    public int meditateCost = 20;
+    bool unblind = false;
+    bool meditateCharged = true;
+
+    public GameObject forcefieldCooldown;
+    public int forcefieldCost = 20;
+    public GameObject forcefield;
+    public GameObject point;
+    public GameObject userCamera;
+    bool forcefieldCharged = true;
+
     public PlayerStats playerStats;
     public Material noReflection;
     public Material Reflection;
 
-    bool unblind = false;
-    bool charged = true;
     void Start() {
-        cooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
+        playerStats.stats[StatNames.Mana] = 100;
+        meditateCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update() {
-        if (unblind) setMaterial(Reflection);
-        else setMaterial(noReflection);
-        if (Mathf.Approximately(cooldown.transform.localScale.x, 0)) charged = true; else charged = false;
-        if (Input.GetButtonDown("Fire2") && charged && playerStats.Use(20)) {
-            charged = false;
-            StartCoroutine(ability());
+        if (unblind) SetMaterial(Reflection);
+        else SetMaterial(noReflection);
+        if (Mathf.Approximately(meditateCooldown.transform.localScale.x, 0)) meditateCharged = true; else meditateCharged = false;
+        if (Input.GetButtonDown("Fire2") && meditateCharged && playerStats.Use(meditateCost)) {
+            meditateCharged = false;
+            StartCoroutine(Meditate());
+        }
+        if (Input.GetButtonDown("Fire3") && forcefieldCharged && playerStats.Use(forcefieldCost)) {
+            forcefieldCharged = false;
+            StartCoroutine(Forcefield());
         }
     }
 
-    void setMaterial(Material material) {
+    void SetMaterial(Material material) {
         foreach (Transform room in RoomGenerator.transform) {
             Transform floorParent = room.GetChild(0);
             Transform floor = floorParent.transform.GetChild(0);
@@ -34,17 +50,24 @@ public class Abilities : MonoBehaviour {
         }
     }
 
-    private IEnumerator ability() {
+    private IEnumerator Meditate() {
         unblind = true;
-        charged = false;
+        meditateCharged = false;
         yield return new WaitForSeconds(4);
-        cooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        meditateCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         unblind = false;
-        StartCoroutine(ScaleOverTime(cooldown, 4));
+        StartCoroutine(ScaleOverTime(meditateCooldown, 4));
+    }
+
+    private IEnumerator Forcefield() {
+        var deployedForcefield = Instantiate(forcefield, point.transform.position, forcefield.transform.localRotation, null);
+        yield return new WaitForSeconds(4);
+        Destroy(deployedForcefield);
+        forcefieldCharged = true;
     }
 
     private IEnumerator ScaleOverTime(GameObject ability, float duration) {
-        charged = false;
+        meditateCharged = false;
         var startScale = ability.transform.localScale;
         var endScale = new Vector3(0, ability.transform.localScale.y, ability.transform.localScale.z);
         var elapsed = 0f;
@@ -57,6 +80,6 @@ public class Abilities : MonoBehaviour {
         }
 
         ability.transform.localScale = endScale;
-        charged = true;
+        meditateCharged = true;
     }
 }

@@ -8,10 +8,9 @@ public class Sword : MonoBehaviour
         InitializeSword();
 
         // Set initial position to zero
-        transform.position = Vector3.zero;
-
+        
         // Sets the initial rotation to no rotation
-        transform.rotation = Quaternion.identity;
+        transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
     void Update()

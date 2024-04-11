@@ -15,7 +15,7 @@ MonoBehaviour:
   stats:
     list:
     - Key: 0
-      Value: 89.3059
+      Value: 100
     - Key: 1
       Value: 100
     - Key: 2
@@ -29,7 +29,7 @@ MonoBehaviour:
     - Key: 6
       Value: 10
     - Key: 7
-      Value: 80
+      Value: 100
     - Key: 8
       Value: 100
     - Key: 9
@@ -52,5 +52,7 @@ MonoBehaviour:
       Value: 15
     keyCollision: 0
   attackManaCost: 1
-  regenerating: 0
-  recharging: 0
+  hpCooldown: 0
+  maxHPCooldown: 500
+  manaCooldown: 0
+  maxManaCooldown: 500
