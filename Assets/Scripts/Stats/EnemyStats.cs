@@ -11,7 +11,7 @@ public class EnemyStats : ScriptableObject {
     //lose health
     public bool Damage(float amount) {
         if (amount > stats[StatNames.Health]) stats[StatNames.Health] = 0;
-        stats[StatNames.Health] -= Mathf.Min(amount, 1);
+        stats[StatNames.Health] -= Mathf.Max(amount, 1);
         return true;
     }
 
