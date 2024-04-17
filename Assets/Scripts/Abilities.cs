@@ -32,11 +32,11 @@ public class Abilities : MonoBehaviour {
         if (unblind) SetMaterial(Reflection);
         else SetMaterial(noReflection);
         if (Mathf.Approximately(meditateCooldown.transform.localScale.x, 0)) meditateCharged = true; else meditateCharged = false;
-        if (Input.GetButtonDown("Fire2") && meditateCharged && playerStats.Use(meditateCost)) {
+        if (Input.GetButtonDown("Fire2") && meditateCharged && playerStats.UseMana(meditateCost)) {
             meditateCharged = false;
             StartCoroutine(Meditate());
         }
-        if (Input.GetButtonDown("Fire3") && forcefieldCharged && playerStats.Use(forcefieldCost)) {
+        if (Input.GetButtonDown("Fire3") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
             forcefieldCharged = false;
             StartCoroutine(Forcefield());
         }

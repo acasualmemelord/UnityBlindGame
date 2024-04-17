@@ -31,7 +31,7 @@ public class Move : MonoBehaviour {
         if (collider && !collider.CompareTag("Invisible") && !collider.CompareTag("Player")) {
             if (collider.name == "EnemyBody") {
                 GameObject enemy = collider.gameObject.transform.parent.gameObject;
-                EnemyStats enemyStats = enemy.GetComponent<EnemySystem>().enemyStats;
+                EnemyStats enemyStats = enemy.GetComponent<EnemySystem>().thisStats;
                 enemy.GetComponent<Rigidbody>().AddForce(1000f * transform.forward);
                 enemyStats.Damage(playerStats.stats[StatNames.Magic] - enemyStats.stats[StatNames.Resilience]);
                 Debug.Log(enemyStats.stats[StatNames.Health] + " " + playerStats.stats[StatNames.Magic] + " " + enemyStats.stats[StatNames.Resilience]);

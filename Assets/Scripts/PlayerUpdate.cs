@@ -8,6 +8,13 @@ public class PlayerUpdate : MonoBehaviour {
     public Transform healthBar;
     public Transform manaBar;
 
+    private void Start() {
+        playerStats.stats[StatNames.Health] = playerStats.stats[StatNames.MaxHealth];
+        playerStats.hpCooldown = 0;
+        playerStats.manaCooldown = 0;
+        playerStats.staminaCooldown = 0;
+    }
+
     void Update() {
         healthBar.localScale = new Vector3(playerStats.stats[StatNames.Health] / playerStats.stats[StatNames.MaxHealth], 0.5f, 1f);
         manaBar.localScale = new Vector3(playerStats.stats[StatNames.Mana] / playerStats.stats[StatNames.MaxMana], 0.5f, 1f);
@@ -21,11 +28,19 @@ public class PlayerUpdate : MonoBehaviour {
         }
 
         if (playerStats.manaCooldown == 0) {
-            if (playerStats.stats[StatNames.Mana] < playerStats.stats[StatNames.MaxMana]) playerStats.Infuse(playerStats.stats[StatNames.ManaRegen] * Time.deltaTime);
+            if (playerStats.stats[StatNames.Mana] < playerStats.stats[StatNames.MaxMana]) playerStats.GainMana(playerStats.stats[StatNames.ManaRegen] * Time.deltaTime);
             else if (playerStats.stats[StatNames.Mana] > playerStats.stats[StatNames.MaxMana]) playerStats.stats[StatNames.Mana] = playerStats.stats[StatNames.MaxMana];
         }
         else {
             StartCoroutine(ManaWaiter());
+        }
+
+        if (playerStats.staminaCooldown == 0) {
+            if (playerStats.stats[StatNames.Stamina] < playerStats.stats[StatNames.MaxStamina]) playerStats.GainStamina(playerStats.stats[StatNames.StaminaRegen] * Time.deltaTime);
+            else if (playerStats.stats[StatNames.Stamina] > playerStats.stats[StatNames.MaxStamina]) playerStats.stats[StatNames.Stamina] = playerStats.stats[StatNames.MaxStamina];
+        }
+        else {
+            StartCoroutine(StaminaWaiter());
         }
     }
     private IEnumerator HPWaiter() {
@@ -41,5 +56,13 @@ public class PlayerUpdate : MonoBehaviour {
             playerStats.manaCooldown -= Time.deltaTime;
         }
         playerStats.manaCooldown = 0;
+    }
+
+    private IEnumerator StaminaWaiter() {
+        while (playerStats.staminaCooldown > 0) {
+            yield return null;
+            playerStats.staminaCooldown -= Time.deltaTime;
+        }
+        playerStats.staminaCooldown = 0;
     }
 }

@@ -24,6 +24,7 @@ public enum StatNames {
     SprintMultiplier,
     JumpHeight,
     Stamina,
+    MaxStamina,
     StaminaRegen,
     SightRadius,
 

@@ -8,6 +8,9 @@ using UnityEditor;
 public class PlayerStats : ScriptableObject {
     public Stats stats = new();
 
+    //movement
+    public bool isSprinting = false;
+
     //mage stats
     public float homingRadius = 40;
     public float attackManaCost = 1;
@@ -16,6 +19,8 @@ public class PlayerStats : ScriptableObject {
     public float maxHPCooldown = 500;
     public float manaCooldown = 0;
     public float maxManaCooldown = 500;
+    public float staminaCooldown = 0;
+    public float maxStaminaCooldown = 250;
 
     //lose health
     public bool Damage (float amount) {
@@ -33,7 +38,7 @@ public class PlayerStats : ScriptableObject {
     }
 
     //lose mana
-    public bool Use (float amount) {
+    public bool UseMana (float amount) {
         if(amount > stats[StatNames.Mana]) return false;
         stats[StatNames.Mana] -= amount;
         manaCooldown = maxManaCooldown;
@@ -41,9 +46,24 @@ public class PlayerStats : ScriptableObject {
     }
 
     //gain mana
-    public bool Infuse (float amount) {
+    public bool GainMana (float amount) {
         if (stats[StatNames.Mana] == stats[StatNames.MaxMana]) return false;
         stats[StatNames.Mana] = Mathf.Min(stats[StatNames.Mana] + amount, stats[StatNames.MaxMana]);
+        return true;
+    }
+
+    //lose stamina
+    public bool UseStamina(float amount) {
+        if (amount > stats[StatNames.Stamina]) return false;
+        stats[StatNames.Stamina] -= amount;
+        staminaCooldown = maxStaminaCooldown;
+        return true;
+    }
+
+    //gain mana
+    public bool GainStamina(float amount) {
+        if (stats[StatNames.Stamina] == stats[StatNames.MaxStamina]) return false;
+        stats[StatNames.Stamina] = Mathf.Min(stats[StatNames.Stamina] + amount, stats[StatNames.MaxStamina]);
         return true;
     }
 }

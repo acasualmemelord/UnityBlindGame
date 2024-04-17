@@ -112,7 +112,7 @@ public class DungeonGenerator : MonoBehaviour {
                 if (currentRoom.visited) {
                     var newRoom = Instantiate(room, new Vector3(i * offset.x, 2.5f, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
                     newRoom.UpdateRoom(currentRoom.status);
-
+                    newRoom.SpawnEnemies();
                     newRoom.name += " " + i + " - " + j;
                 }
             }

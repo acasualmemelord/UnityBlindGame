@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour {
     public GameObject userCamera;
 
     void Update(){
-        if (Input.GetButtonDown("Fire1") && playerStats.Use(playerStats.attackManaCost)) {
+        if (Input.GetButtonDown("Fire1") && playerStats.UseMana(playerStats.attackManaCost)) {
             _ = Instantiate(projectile, point.transform.position, Quaternion.LookRotation(userCamera.transform.forward));
         }
     }
