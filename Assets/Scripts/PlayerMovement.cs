@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour {
 
     Vector3 velocity;
     bool isGrounded;
+    bool isSprinting;
+
     // Update is called once per frame
     void Update() {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -24,12 +26,12 @@ public class PlayerMovement : MonoBehaviour {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        if (Input.GetButtonDown("Sprint") && playerStats.UseStamina(1)) playerStats.isSprinting = true;
-        if (Input.GetButtonUp("Sprint")) playerStats.isSprinting = false;
+        if (Input.GetButtonDown("Sprint")) isSprinting = true;
+        if (Input.GetButtonUp("Sprint")) isSprinting = false;
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(((playerStats.isSprinting) ? playerStats.stats[StatNames.SprintMultiplier] : 1) * playerStats.stats[StatNames.Speed] * Time.deltaTime * move);
+        controller.Move(((isSprinting) ? playerStats.stats[StatNames.SprintMultiplier] : 1) * playerStats.stats[StatNames.Speed] * Time.deltaTime * move);
 
         if(Input.GetButtonDown("Jump") && isGrounded) {
             velocity.y = Mathf.Sqrt(playerStats.stats[StatNames.JumpHeight] * -2f * gravity);
