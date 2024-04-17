@@ -8,7 +8,7 @@ public class AttackDetection : MonoBehaviour {
     public GameObject sphere;
     public static bool canHit = true;
     private void Start() {
-        float scale = enemyStats.stats[StatNames.SightRadius];
+        float scale = enemyStats.stats[StatNames.AttackRadius];
         sphere.transform.localScale = new Vector3(scale, scale, scale);
     }
 

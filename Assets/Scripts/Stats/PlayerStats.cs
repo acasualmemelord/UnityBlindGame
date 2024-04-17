@@ -8,7 +8,10 @@ using UnityEditor;
 public class PlayerStats : ScriptableObject {
     public Stats stats = new();
 
+    //mage stats
+    public float homingRadius = 40;
     public float attackManaCost = 1;
+
     public float hpCooldown = 0;
     public float maxHPCooldown = 500;
     public float manaCooldown = 0;
@@ -17,7 +20,7 @@ public class PlayerStats : ScriptableObject {
     //lose health
     public bool Damage (float amount) {
         if (amount > stats[StatNames.Health]) stats[StatNames.Health] = 0;
-        stats[StatNames.Health] -= Mathf.Min(amount, 1);
+        stats[StatNames.Health] -= Mathf.Max(amount, 1);
         hpCooldown = maxHPCooldown;
         return true;
     }
