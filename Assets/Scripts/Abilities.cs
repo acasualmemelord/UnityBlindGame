@@ -66,6 +66,7 @@ public class Abilities : MonoBehaviour {
         forcefieldCharged = true;
     }
 
+    //todo: fast projectile that has ricochets but has no homing
     private IEnumerator ScaleOverTime(GameObject ability, float duration) {
         meditateCharged = false;
         var startScale = ability.transform.localScale;

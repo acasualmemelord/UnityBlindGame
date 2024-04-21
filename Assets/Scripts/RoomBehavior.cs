@@ -18,7 +18,6 @@ public class RoomBehavior : MonoBehaviour {
         for (int i = 1; i < 5; i ++) {
             var rand = Random.Range(0, 2);
             if (rand > 0) {
-                Debug.Log(rand);
                 var _ = Instantiate(enemy, transform.position, Quaternion.identity);
             }
         }

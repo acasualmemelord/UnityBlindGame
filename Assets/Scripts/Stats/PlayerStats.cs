@@ -8,6 +8,9 @@ using UnityEditor;
 public class PlayerStats : ScriptableObject {
     public Stats stats = new();
 
+    public int xp = 0;
+    public int level = 1;
+
     //movement
     public bool isSprinting = false;
 

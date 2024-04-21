@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour {
@@ -12,7 +13,8 @@ public class PlayerDetection : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider c) {
-        if (c.name == "First Person Player") {
+        if (c.CompareTag("Player")) {
+            Debug.Log(sphere.GetInstanceID());
             found = true;
         }
     }

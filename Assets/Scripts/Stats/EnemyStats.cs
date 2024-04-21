@@ -9,9 +9,9 @@ public class EnemyStats : ScriptableObject {
     public Stats stats = new();
 
     //lose health
-    public bool Damage(float amount) {
-        if (amount > stats[StatNames.Health]) stats[StatNames.Health] = 0;
-        stats[StatNames.Health] -= Mathf.Max(amount, 1);
+    public bool Damage(float in_health,  float amount, out float health) {
+        if (amount > in_health) health = 0;
+        else health = in_health - Mathf.Max(amount, 1);
         return true;
     }
 
