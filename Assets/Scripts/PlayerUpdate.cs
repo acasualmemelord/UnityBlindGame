@@ -7,9 +7,12 @@ public class PlayerUpdate : MonoBehaviour {
     public PlayerStats playerStats;
     public Transform healthBar;
     public Transform manaBar;
+    public Transform staminaBar;
 
     private void Start() {
         playerStats.stats[StatNames.Health] = playerStats.stats[StatNames.MaxHealth];
+        playerStats.stats[StatNames.Mana] = playerStats.stats[StatNames.MaxMana];
+        playerStats.stats[StatNames.Stamina] = playerStats.stats[StatNames.MaxStamina];
         playerStats.hpCooldown = 0;
         playerStats.manaCooldown = 0;
         playerStats.staminaCooldown = 0;
@@ -17,7 +20,8 @@ public class PlayerUpdate : MonoBehaviour {
 
     void Update() {
         healthBar.localScale = new Vector3(playerStats.stats[StatNames.Health] / playerStats.stats[StatNames.MaxHealth], 0.5f, 1f);
-        manaBar.localScale = new Vector3(playerStats.stats[StatNames.Mana] / playerStats.stats[StatNames.MaxMana], 0.5f, 1f);
+        manaBar.localScale = new Vector3(playerStats.stats[StatNames.Mana] / playerStats.stats[StatNames.MaxMana], 1f, 1f);
+        staminaBar.localScale = new Vector3(playerStats.stats[StatNames.Stamina] / playerStats.stats[StatNames.MaxStamina], 1f, 1f);
 
         if (playerStats.hpCooldown == 0) {
             if (playerStats.stats[StatNames.Health] < playerStats.stats[StatNames.MaxHealth]) playerStats.Heal(playerStats.stats[StatNames.HealthRegen] * Time.deltaTime);

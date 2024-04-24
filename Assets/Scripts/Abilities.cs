@@ -36,7 +36,7 @@ public class Abilities : MonoBehaviour {
             meditateCharged = false;
             StartCoroutine(Meditate());
         }
-        if (Input.GetButtonDown("Fire3") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
+        if (Input.GetButtonDown("Fire2") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
             forcefieldCharged = false;
             StartCoroutine(Forcefield());
         }

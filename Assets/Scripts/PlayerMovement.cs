@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
     public CharacterController controller;
     public PlayerStats playerStats;
+    public float multiplier = 1f;
     public float gravity = -9.81f;
 
     public Transform groundCheck;
@@ -28,10 +29,11 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetButtonDown("Sprint")) isSprinting = true;
         if (Input.GetButtonUp("Sprint")) isSprinting = false;
-
+        if (isSprinting && playerStats.UseStamina(0.1f)) multiplier = playerStats.stats[StatNames.SprintMultiplier];
+        else multiplier = 1f;
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(((isSprinting) ? playerStats.stats[StatNames.SprintMultiplier] : 1) * playerStats.stats[StatNames.Speed] * Time.deltaTime * move);
+        controller.Move(multiplier * playerStats.stats[StatNames.Speed] * Time.deltaTime * move);
 
         if(Input.GetButtonDown("Jump") && isGrounded) {
             velocity.y = Mathf.Sqrt(playerStats.stats[StatNames.JumpHeight] * -2f * gravity);

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerDetection : MonoBehaviour {
     public EnemyStats enemyStats;
     public GameObject sphere;
-    public static bool found = false;
+    public bool found = false;
     private void Start() {
         float scale = enemyStats.stats[StatNames.SightRadius];
         sphere.transform.localScale = new Vector3(scale, scale, scale);

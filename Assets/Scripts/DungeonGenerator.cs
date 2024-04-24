@@ -14,7 +14,7 @@ public class DungeonGenerator : MonoBehaviour {
     public GameObject room;
     public Vector2 offset;
     List<Room> floor;
-
+    public GameObject player;
     void Start() {
         MazeGenerator();
     }
@@ -112,6 +112,7 @@ public class DungeonGenerator : MonoBehaviour {
                 if (currentRoom.visited) {
                     var newRoom = Instantiate(room, new Vector3(i * offset.x, 2.5f, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
                     newRoom.UpdateRoom(currentRoom.status);
+                    newRoom.GetComponent<RoomBehavior>().player = player;
                     newRoom.SpawnEnemies();
                     newRoom.name += " " + i + " - " + j;
                 }

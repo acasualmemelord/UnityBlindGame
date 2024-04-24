@@ -9,6 +9,8 @@ public class Move : MonoBehaviour {
     public Rigidbody rb;
     public Hit hit;
     public Homing homing;
+    public bool foundTarget = false;
+    Collider target;
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
@@ -17,13 +19,15 @@ public class Move : MonoBehaviour {
     }
 
     void Update() {
-        Collider target = homing.homingStatus;
+        if(!foundTarget) target = homing.homingStatus;
         if (target && target.name == "EnemyBody") {
+            foundTarget = true;
             Vector3 distance = (target.transform.position - transform.position);
             multiplier = 1.5f;
             rb.AddForce(speed * multiplier * ((transform.forward + distance) / 2));
         }
         else {
+            foundTarget = false;
             multiplier = 1;
             rb.AddForce(speed * multiplier * transform.forward);
         }

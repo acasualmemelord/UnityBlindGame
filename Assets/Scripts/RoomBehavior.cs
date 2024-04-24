@@ -6,6 +6,7 @@ public class RoomBehavior : MonoBehaviour {
     public GameObject[] walls;
     public GameObject[] doors;
     public GameObject enemy;
+    public GameObject player;
 
     public void UpdateRoom(bool[] status) {
         for (int i = 0; i < status.Length; i ++) {
@@ -17,8 +18,10 @@ public class RoomBehavior : MonoBehaviour {
     public void SpawnEnemies() {
         for (int i = 1; i < 5; i ++) {
             var rand = Random.Range(0, 2);
+            var pos = transform.GetChild(0).GetChild(i);
             if (rand > 0) {
-                var _ = Instantiate(enemy, transform.position, Quaternion.identity);
+                var newEnemy = Instantiate(enemy, pos.position, Quaternion.identity);
+                newEnemy.transform.GetComponentInChildren<EnemySystem>().player = player;
             }
         }
     }
