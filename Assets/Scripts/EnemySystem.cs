@@ -26,7 +26,6 @@ public class EnemySystem : MonoBehaviour {
             lookat = true;
         }
         if (lookat) {
-            Debug.Log(player.transform.position);
             transform.LookAt(player.transform.position);
             Vector3 v = rb.velocity;
             if(v.x > -thisStats.stats[StatNames.Speed] && v.x < thisStats.stats[StatNames.Speed] && v.z > -thisStats.stats[StatNames.Speed] && v.z < thisStats.stats[StatNames.Speed]) {

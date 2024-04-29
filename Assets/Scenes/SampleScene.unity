@@ -307,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 107769144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.37, y: 1.273, z: 2.82}
+  m_LocalPosition: {x: 0.44, y: 1.273, z: 2.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1490,6 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1577832431}
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
+  multiplier: 1
   gravity: -9.81
   groundCheck: {fileID: 1870259997}
   groundDistance: 0.4
@@ -1697,7 +1698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
-  projectile: {fileID: 8125436370720696565, guid: 66924ae80aafef646a5a06bcbfc8996c, type: 3}
+  projectile: {fileID: 8125436370720696565, guid: 01a0402646c92aa4f8e38ab5fb1bf809, type: 3}
   point: {fileID: 107769144}
   userCamera: {fileID: 963194225}
 --- !u!1 &1870259996

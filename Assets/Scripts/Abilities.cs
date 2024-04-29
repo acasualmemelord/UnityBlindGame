@@ -14,9 +14,15 @@ public class Abilities : MonoBehaviour {
     public GameObject forcefieldCooldown;
     public int forcefieldCost = 20;
     public GameObject forcefield;
-    public GameObject point;
+    public GameObject forcefieldPoint;
     public GameObject userCamera;
     bool forcefieldCharged = true;
+
+    public GameObject ricochetCooldown;
+    public int ricochetCost = 10;
+    public GameObject ricochet;
+    public GameObject ricochetPoint;
+    bool ricochetCharged = true;
 
     public PlayerStats playerStats;
     public Material noReflection;
@@ -36,7 +42,7 @@ public class Abilities : MonoBehaviour {
             meditateCharged = false;
             StartCoroutine(Meditate());
         }
-        if (Input.GetButtonDown("Fire2") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
+        if (Input.GetButtonDown("Jump") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
             forcefieldCharged = false;
             StartCoroutine(Forcefield());
         }
@@ -51,6 +57,10 @@ public class Abilities : MonoBehaviour {
     }
 
     private IEnumerator Meditate() {
+        float speed = playerStats.stats[StatNames.Speed];
+        playerStats.stats[StatNames.Speed] = 0;
+        yield return new WaitForSeconds(2);
+        playerStats.stats[StatNames.Speed] = speed;
         unblind = true;
         meditateCharged = false;
         yield return new WaitForSeconds(4);
@@ -60,7 +70,7 @@ public class Abilities : MonoBehaviour {
     }
 
     private IEnumerator Forcefield() {
-        var deployedForcefield = Instantiate(forcefield, point.transform.position, forcefield.transform.localRotation, null);
+        var deployedForcefield = Instantiate(forcefield, forcefieldPoint.transform.position, forcefield.transform.localRotation, null);
         yield return new WaitForSeconds(4);
         Destroy(deployedForcefield);
         forcefieldCharged = true;

@@ -14,7 +14,6 @@ public class PlayerDetection : MonoBehaviour {
 
     private void OnTriggerEnter(Collider c) {
         if (c.CompareTag("Player")) {
-            Debug.Log(sphere.GetInstanceID());
             found = true;
         }
     }

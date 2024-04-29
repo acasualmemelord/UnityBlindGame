@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 1199260980452211808}
   - component: {fileID: 8854946567050183594}
   m_Layer: 7
-  m_Name: Projectile
+  m_Name: Homing Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
