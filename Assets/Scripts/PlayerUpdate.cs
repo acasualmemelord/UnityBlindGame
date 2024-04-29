@@ -10,6 +10,7 @@ public class PlayerUpdate : MonoBehaviour {
     public Transform staminaBar;
 
     private void Start() {
+        Cursor.lockState = CursorLockMode.Locked;
         playerStats.stats[StatNames.Health] = playerStats.stats[StatNames.MaxHealth];
         playerStats.stats[StatNames.Mana] = playerStats.stats[StatNames.MaxMana];
         playerStats.stats[StatNames.Stamina] = playerStats.stats[StatNames.MaxStamina];

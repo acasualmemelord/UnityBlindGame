@@ -21,6 +21,8 @@ public class Abilities : MonoBehaviour {
     public GameObject ricochetCooldown;
     public int ricochetCost = 10;
     public GameObject ricochet;
+    public GameObject original;
+    public GameObject staff;
     public GameObject ricochetPoint;
     bool ricochetCharged = true;
 
@@ -29,9 +31,9 @@ public class Abilities : MonoBehaviour {
     public Material Reflection;
 
     void Start() {
-        playerStats.stats[StatNames.Mana] = 100;
         meditateCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
-        Cursor.lockState = CursorLockMode.Locked;
+        forcefieldCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
+        ricochetCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
     }
 
     void Update() {
@@ -67,13 +69,25 @@ public class Abilities : MonoBehaviour {
         meditateCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         unblind = false;
         StartCoroutine(ScaleOverTime(meditateCooldown, 4));
+        meditateCharged = true;
     }
 
     private IEnumerator Forcefield() {
+        forcefieldCharged = false;
         var deployedForcefield = Instantiate(forcefield, forcefieldPoint.transform.position, forcefield.transform.localRotation, null);
         yield return new WaitForSeconds(4);
         Destroy(deployedForcefield);
+        StartCoroutine(ScaleOverTime(forcefieldCooldown, 4));
         forcefieldCharged = true;
+    }
+    private IEnumerator Ricochet() {
+        ricochetCharged = false;
+        Attack attack = staff.GetComponentInChildren<Attack>();
+        attack.projectile = ricochet;
+        yield return new WaitForSeconds(5);
+        attack.projectile = original;
+        StartCoroutine(ScaleOverTime(ricochetCooldown, 4));
+        ricochetCharged = true;
     }
 
     //todo: fast projectile that has ricochets but has no homing
@@ -91,6 +105,5 @@ public class Abilities : MonoBehaviour {
         }
 
         ability.transform.localScale = endScale;
-        meditateCharged = true;
     }
 }
