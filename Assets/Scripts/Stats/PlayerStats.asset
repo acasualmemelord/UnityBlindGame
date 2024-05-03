@@ -19,7 +19,7 @@ MonoBehaviour:
     - Key: 1
       Value: 100
     - Key: 2
-      Value: 0.25
+      Value: 1
     - Key: 3
       Value: 10
     - Key: 4
@@ -29,11 +29,11 @@ MonoBehaviour:
     - Key: 6
       Value: 10
     - Key: 7
-      Value: 64.89539
+      Value: 35.267433
     - Key: 8
       Value: 100
     - Key: 9
-      Value: 1
+      Value: 3
     - Key: 10
       Value: 10
     - Key: 11
@@ -45,11 +45,11 @@ MonoBehaviour:
     - Key: 14
       Value: 3
     - Key: 15
-      Value: 100
+      Value: 88.3216
     - Key: 16
       Value: 100
     - Key: 17
-      Value: 1
+      Value: 5
     keyCollision: 0
   xp: 0
   level: 1
