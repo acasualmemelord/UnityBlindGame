@@ -48,6 +48,7 @@ public class Abilities : MonoBehaviour {
         }
         if (Input.GetButtonDown("Ability 2") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
             forcefieldCharged = false;
+            Debug.Log("e pressed");
             StartCoroutine(Forcefield());
         }
         if (Input.GetButtonDown("Ability 3") && ricochetCharged && playerStats.UseMana(ricochetCost)) {
@@ -81,6 +82,7 @@ public class Abilities : MonoBehaviour {
     private IEnumerator Forcefield() {
         forcefieldCharged = false;
         var deployedForcefield = Instantiate(forcefield, forcefieldPoint.transform.position, forcefield.transform.localRotation, null);
+        Debug.Log(deployedForcefield);
         yield return new WaitForSeconds(4);
         Destroy(deployedForcefield);
         StartCoroutine(ScaleOverTime(forcefieldCooldown, 4));
