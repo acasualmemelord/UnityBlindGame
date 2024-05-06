@@ -7,13 +7,21 @@ public class AttackDetection : MonoBehaviour {
     public PlayerStats playerStats;
     public GameObject sphere;
     public static bool canHit = true;
+    public Animate animate;
+
     private void Start() {
+        animate = transform.parent.GetComponentInChildren<Animate>();
         float scale = enemyStats.stats[StatNames.AttackRadius];
         sphere.transform.localScale = new Vector3(scale, scale, scale);
+    }
+    private void OnTriggerEnter(Collider other) {
+        canHit = true;
     }
 
     private void OnTriggerStay(Collider c) {
         if (c.name == "First Person Player" && canHit) {
+            Debug.Log(sphere.GetInstanceID() + " entered");
+            animate.Attack();
             StartCoroutine(Waiter());
         }
     }
@@ -24,5 +32,8 @@ public class AttackDetection : MonoBehaviour {
         canHit = true;
     }
 
-    private void OnTriggerExit(Collider c) { canHit = false; }
+    private void OnTriggerExit(Collider c) {
+        if (!animate.GetComponent<Animator>().GetBool("isDying")) animate.Reset();
+        canHit = false; 
+    }
 }

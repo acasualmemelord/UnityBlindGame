@@ -40,13 +40,19 @@ public class Abilities : MonoBehaviour {
         if (unblind) SetMaterial(Reflection);
         else SetMaterial(noReflection);
         if (Mathf.Approximately(meditateCooldown.transform.localScale.x, 0)) meditateCharged = true; else meditateCharged = false;
-        if (Input.GetButtonDown("Fire2") && meditateCharged && playerStats.UseMana(meditateCost)) {
+        if (Mathf.Approximately(forcefieldCooldown.transform.localScale.x, 0)) forcefieldCharged = true; else forcefieldCharged = false;
+        if (Mathf.Approximately(ricochetCooldown.transform.localScale.x, 0)) ricochetCharged = true; else ricochetCharged = false;
+        if (Input.GetButtonDown("Ability 1") && meditateCharged && playerStats.UseMana(meditateCost)) {
             meditateCharged = false;
             StartCoroutine(Meditate());
         }
-        if (Input.GetButtonDown("Jump") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
+        if (Input.GetButtonDown("Ability 2") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
             forcefieldCharged = false;
             StartCoroutine(Forcefield());
+        }
+        if (Input.GetButtonDown("Ability 3") && ricochetCharged && playerStats.UseMana(ricochetCost)) {
+            ricochetCharged = false;
+            StartCoroutine(Ricochet());
         }
     }
 

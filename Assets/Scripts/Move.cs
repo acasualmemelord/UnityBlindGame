@@ -20,9 +20,9 @@ public class Move : MonoBehaviour {
 
     void Update() {
         if(!foundTarget) target = homing.homingStatus;
-        if (target && target.name == "EnemyBody") {
+        if (target && target.CompareTag("Enemy")) {
             foundTarget = true;
-            Vector3 distance = (target.transform.position - transform.position);
+            Vector3 distance = (target.transform.GetChild(0).position - transform.position);
             multiplier = 1.5f;
             rb.AddForce(speed * multiplier * ((transform.forward + distance) / 2));
         }
@@ -33,13 +33,13 @@ public class Move : MonoBehaviour {
         }
         Collider collider = hit.colliderStatus;
         if (collider && !collider.CompareTag("Invisible") && !collider.CompareTag("Player")) {
-            if (collider.name == "EnemyBody") {
+            if (collider.CompareTag("Enemy")) {
                 GameObject enemy = collider.gameObject.transform.parent.gameObject;
                 EnemySystem system = enemy.GetComponent<EnemySystem>();
                 EnemyStats enemyStats = enemy.GetComponent<EnemySystem>().thisStats;
                 enemy.GetComponent<Rigidbody>().AddForce(1000f * transform.forward);
                 enemyStats.Damage(system.hp, playerStats.stats[StatNames.Magic] - enemyStats.stats[StatNames.Resilience], out system.hp);
-                Debug.Log(enemyStats.stats[StatNames.Health] + " " + playerStats.stats[StatNames.Magic] + " " + enemyStats.stats[StatNames.Resilience]);
+                Debug.Log(system.hp + " " + playerStats.stats[StatNames.Magic] + " " + enemyStats.stats[StatNames.Resilience]);
             }
             Destroy(gameObject);
         }
