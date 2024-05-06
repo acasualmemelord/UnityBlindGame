@@ -12,6 +12,6 @@ public class GameOverHandler : MonoBehaviour
     public void MainMenu()
     {
         // Loads the main menu scene
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuScene");
     }
 }
