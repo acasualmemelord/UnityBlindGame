@@ -8,6 +8,7 @@ public class PlayerUpdate : MonoBehaviour {
     public Transform healthBar;
     public Transform manaBar;
     public Transform staminaBar;
+    public GameManager gameManager;
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
@@ -46,6 +47,11 @@ public class PlayerUpdate : MonoBehaviour {
         }
         else {
             StartCoroutine(StaminaWaiter());
+        }
+
+        if (playerStats.stats[StatNames.Health] <= 0)
+        {
+            gameManager.GameOver();
         }
     }
     private IEnumerator HPWaiter() {
