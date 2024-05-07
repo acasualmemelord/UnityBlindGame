@@ -11,6 +11,16 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         musicAudioSource = GetComponent<AudioSource>();
     }
 

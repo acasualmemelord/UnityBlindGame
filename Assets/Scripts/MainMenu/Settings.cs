@@ -12,6 +12,13 @@ public class Settings : MonoBehaviour
     private float originalMusicVolume;
     private float originalSoundFXVolume;
 
+    private void Start()
+    {
+        originalMusicVolume = musicSlider.value;
+        originalSoundFXVolume = soundFXSlider.value;
+        originalBrightness = brightnessSlider.value;
+    }
+
     public void AdjustBrightness(float brightnessValue)
     {
         // Clamps the brightness value between 0 and 1
