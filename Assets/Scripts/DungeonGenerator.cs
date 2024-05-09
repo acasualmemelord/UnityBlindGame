@@ -23,13 +23,13 @@ public class DungeonGenerator : MonoBehaviour {
         floor = new List<Room>();
         for (int i = 0; i < size.x; i++) {
             for (int j = 0; j < size.y; j++) {
-                Room room = new Room();
+                Room room = new();
                 floor.Add(room);
             }
         }
 
         int currentRoom = startPos;
-        Stack<int> path = new Stack<int>();
+        Stack<int> path = new();
         int k = 0;
 
         while(k < 1000) {
@@ -80,7 +80,7 @@ public class DungeonGenerator : MonoBehaviour {
     }
 
     List<int> Neighbors(int cell) {
-        List<int> neighbors = new List<int>();
+        List<int> neighbors = new();
 
         //north
         if(cell - size.x >= 0 && !floor[Mathf.FloorToInt(cell - size.x)].visited) {
@@ -113,7 +113,7 @@ public class DungeonGenerator : MonoBehaviour {
                     var newRoom = Instantiate(room, new Vector3(i * offset.x, 2.5f, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
                     newRoom.UpdateRoom(currentRoom.status);
                     newRoom.GetComponent<RoomBehavior>().player = player;
-                    newRoom.SpawnEnemies();
+                    if(i != 0 && j != 0) newRoom.SpawnEnemies();
                     newRoom.name += " " + i + " - " + j;
                 }
             }

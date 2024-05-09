@@ -49,8 +49,7 @@ public class PlayerUpdate : MonoBehaviour {
             StartCoroutine(StaminaWaiter());
         }
 
-        if (playerStats.stats[StatNames.Health] <= 0)
-        {
+        if (playerStats.stats[StatNames.Health] <= 0) {
             gameManager.GameOver();
         }
     }

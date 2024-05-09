@@ -15,7 +15,7 @@ MonoBehaviour:
   stats:
     list:
     - Key: 0
-      Value: 100
+      Value: -1
     - Key: 1
       Value: 100
     - Key: 2
@@ -29,7 +29,7 @@ MonoBehaviour:
     - Key: 6
       Value: 10
     - Key: 7
-      Value: 35.267433
+      Value: 100
     - Key: 8
       Value: 100
     - Key: 9
@@ -45,7 +45,7 @@ MonoBehaviour:
     - Key: 14
       Value: 3
     - Key: 15
-      Value: 88.3216
+      Value: 100
     - Key: 16
       Value: 100
     - Key: 17
@@ -56,7 +56,7 @@ MonoBehaviour:
   isSprinting: 0
   homingRadius: 40
   attackManaCost: 1
-  hpCooldown: 0
+  hpCooldown: 478.2393
   maxHPCooldown: 500
   manaCooldown: 0
   maxManaCooldown: 500

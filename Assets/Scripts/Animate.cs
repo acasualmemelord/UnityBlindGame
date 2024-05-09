@@ -20,7 +20,7 @@ public class Animate : MonoBehaviour {
 
     public void Die() {
         anim.SetBool("isDying", true);
-        anim.SetBool("isDead", true);
+        //anim.SetBool("isDead", true);
     }
 
     public void Reset() {

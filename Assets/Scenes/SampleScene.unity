@@ -2157,7 +2157,7 @@ MonoBehaviour:
   forcefieldCooldown: {fileID: 699490918}
   forcefieldCost: 20
   forcefield: {fileID: 6922438529585482604, guid: 1dd273ab264c4654d9bc46033416bce4, type: 3}
-  forcefieldPoint: {fileID: 0}
+  forcefieldPoint: {fileID: 1262206985}
   userCamera: {fileID: 963194225}
   ricochetCooldown: {fileID: 1599776184}
   ricochetCost: 10

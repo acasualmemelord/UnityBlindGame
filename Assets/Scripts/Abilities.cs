@@ -27,6 +27,7 @@ public class Abilities : MonoBehaviour {
     bool ricochetCharged = true;
 
     public PlayerStats playerStats;
+    public PlayerMovement playerMovement;
     public Material noReflection;
     public Material Reflection;
 
@@ -34,6 +35,8 @@ public class Abilities : MonoBehaviour {
         meditateCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
         forcefieldCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
         ricochetCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
+
+        playerMovement = userCamera.transform.parent.GetComponentInChildren<PlayerMovement>();
     }
 
     void Update() {
@@ -67,9 +70,9 @@ public class Abilities : MonoBehaviour {
 
     private IEnumerator Meditate() {
         float speed = playerStats.stats[StatNames.Speed];
-        playerStats.stats[StatNames.Speed] = 0;
+        playerMovement.speed = 0;
         yield return new WaitForSeconds(2);
-        playerStats.stats[StatNames.Speed] = speed;
+        playerMovement.speed = speed;
         unblind = true;
         meditateCharged = false;
         yield return new WaitForSeconds(4);
@@ -82,9 +85,9 @@ public class Abilities : MonoBehaviour {
     private IEnumerator Forcefield() {
         forcefieldCharged = false;
         var deployedForcefield = Instantiate(forcefield, forcefieldPoint.transform.position, forcefield.transform.localRotation, null);
-        Debug.Log(deployedForcefield);
         yield return new WaitForSeconds(4);
         Destroy(deployedForcefield);
+        forcefieldCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         StartCoroutine(ScaleOverTime(forcefieldCooldown, 4));
         forcefieldCharged = true;
     }
@@ -94,14 +97,14 @@ public class Abilities : MonoBehaviour {
         attack.projectile = ricochet;
         yield return new WaitForSeconds(5);
         attack.projectile = original;
+        ricochetCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         StartCoroutine(ScaleOverTime(ricochetCooldown, 4));
         ricochetCharged = true;
     }
 
-    //todo: fast projectile that has ricochets but has no homing
     private IEnumerator ScaleOverTime(GameObject ability, float duration) {
-        meditateCharged = false;
         var startScale = ability.transform.localScale;
+        Debug.Log(startScale);
         var endScale = new Vector3(0, ability.transform.localScale.y, ability.transform.localScale.z);
         var elapsed = 0f;
 
