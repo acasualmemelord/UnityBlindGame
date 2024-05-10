@@ -16,12 +16,14 @@ public class RoomBehavior : MonoBehaviour {
     }
 
     public void SpawnEnemies() {
+        int enemyID = 0;
         for (int i = 1; i < 5; i ++) {
             var rand = Random.Range(0, 3);
             var pos = transform.GetChild(0).GetChild(i);
             if (rand >= 0) {
                 var newEnemy = Instantiate(enemy, pos.position, Quaternion.identity);
                 newEnemy.transform.GetComponentInChildren<EnemySystem>().player = player;
+                newEnemy.name = "Enemy " + enemyID++;
             }
         }
     }

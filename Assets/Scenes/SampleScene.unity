@@ -569,7 +569,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 5, y: 30}
-  m_SizeDelta: {x: 100, y: 109.79999}
+  m_SizeDelta: {x: 100, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &526608486
 MonoBehaviour:
@@ -762,7 +762,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 65, y: 30}
-  m_SizeDelta: {x: 100, y: 109.79999}
+  m_SizeDelta: {x: 100, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &699490920
 MonoBehaviour:
@@ -1494,6 +1494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e7533ee765a6f4ca5e47cf72ad7040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invisible: {fileID: 2100000, guid: 954367a070c4b8041be3d70dbf33d0c9, type: 2}
+  visible: {fileID: 2100000, guid: 9fdb5531bdf185e448dd06dfa8192f8d, type: 2}
 --- !u!1 &1151745106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,6 +1685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1577832431}
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
+  speed: 0
   multiplier: 1
   gravity: -9.81
   groundCheck: {fileID: 1870259997}
@@ -1752,6 +1755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e7533ee765a6f4ca5e47cf72ad7040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invisible: {fileID: 2100000, guid: 79fb32b1a6628bd4fb08cc35019c34cd, type: 2}
+  visible: {fileID: 2100000, guid: 9fdb5531bdf185e448dd06dfa8192f8d, type: 2}
 --- !u!114 &1577832437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,7 +1772,7 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
   healthBar: {fileID: 514636382}
   manaBar: {fileID: 616131467}
-  staminaBar: {fileID: 0}
+  staminaBar: {fileID: 1003394563}
   gameManager: {fileID: 1151745107}
 --- !u!1 &1599776184
 GameObject:
@@ -1804,7 +1809,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 125, y: 30}
-  m_SizeDelta: {x: 100, y: 109.79999}
+  m_SizeDelta: {x: 100, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1599776186
 MonoBehaviour:
@@ -2166,6 +2171,7 @@ MonoBehaviour:
   staff: {fileID: 1772168433}
   ricochetPoint: {fileID: 107769144}
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
+  playerMovement: {fileID: 0}
   noReflection: {fileID: 2100000, guid: 954367a070c4b8041be3d70dbf33d0c9, type: 2}
   Reflection: {fileID: 2100000, guid: 8bd0922734f744c4f94611eeb635ed46, type: 2}
 --- !u!1660057539 &9223372036854775807

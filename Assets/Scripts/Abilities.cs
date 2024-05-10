@@ -104,7 +104,6 @@ public class Abilities : MonoBehaviour {
 
     private IEnumerator ScaleOverTime(GameObject ability, float duration) {
         var startScale = ability.transform.localScale;
-        Debug.Log(startScale);
         var endScale = new Vector3(0, ability.transform.localScale.y, ability.transform.localScale.z);
         var elapsed = 0f;
 

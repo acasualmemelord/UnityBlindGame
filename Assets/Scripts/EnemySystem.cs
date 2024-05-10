@@ -6,9 +6,9 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemySystem : MonoBehaviour {
+    public CharacterController controller;
     bool lookat = false;
     public GameObject player;
-    Rigidbody rb;
     public EnemyStats enemyStats;
     public EnemyStats thisStats;
     public PlayerDetection playerDetection;
@@ -17,7 +17,6 @@ public class EnemySystem : MonoBehaviour {
     public bool dying = false;
     
     private void Start() {
-        rb = GetComponent<Rigidbody>();
         playerDetection = transform.parent.GetComponentInChildren<PlayerDetection>();
         animate = transform.GetComponent<Animate>();
         hp = enemyStats.stats[StatNames.MaxHealth];
@@ -29,16 +28,18 @@ public class EnemySystem : MonoBehaviour {
             dying = true;
             animate.Die();
         }
-        if (playerDetection.found) {
-            lookat = true;
-        }
+        lookat = playerDetection.found;
         if (lookat) {
             Vector3 newtarget = player.transform.position;
             newtarget.y = transform.position.y;
             transform.LookAt(newtarget);
             animate.Chase();
-            rb.AddForce(thisStats.stats[StatNames.Speed] * Time.deltaTime * transform.forward);
-        } else if (!animate.anim.GetBool("isDying")){
+
+            Debug.Log(enemyStats.stats[StatNames.Speed] + " " + transform.forward);
+
+            controller.SimpleMove(enemyStats.stats[StatNames.Speed] * transform.forward);
+        }
+        else if (!animate.anim.GetBool("isDying")) {
             animate.Reset();
         }
     }

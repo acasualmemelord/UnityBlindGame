@@ -20,7 +20,6 @@ public class AttackDetection : MonoBehaviour {
 
     private void OnTriggerStay(Collider c) {
         if (c.name == "First Person Player" && canHit) {
-            Debug.Log(sphere.GetInstanceID() + " entered");
             animate.Attack();
             StartCoroutine(Waiter());
         }
