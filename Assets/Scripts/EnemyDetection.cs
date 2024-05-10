@@ -16,8 +16,10 @@ public class EnemyDetection : MonoBehaviour {
     private void OnTriggerEnter(Collider c) {
         if (c.CompareTag("Enemy")) {
             var enemy = c.transform;
-            Debug.Log(enemy.name);
-            for (int i = 1; i < c.transform.childCount - 1; i++) {
+            if (enemy.childCount == 1) enemy = enemy.parent;
+            else enemy = enemy.GetChild(0);
+            Debug.Log("detected " + enemy + " " + enemy.childCount);
+            for (int i = 1; i < enemy.childCount; i++) {
                 if(enemy.GetChild(i).TryGetComponent<Renderer>(out var renderer)) renderer.sharedMaterial = visible;
             }
         }
@@ -26,7 +28,10 @@ public class EnemyDetection : MonoBehaviour {
     private void OnTriggerExit(Collider c) {
         if (c.CompareTag("Enemy")) {
             var enemy = c.transform;
-            for (int i = 1; i < c.transform.childCount - 1; i++) {
+            if (enemy.childCount == 1) enemy = enemy.parent;
+            else enemy = enemy.GetChild(0);
+            Debug.Log("detected " + enemy + " " + enemy.childCount);
+            for (int i = 1; i < enemy.childCount; i++) {
                 if (enemy.GetChild(i).TryGetComponent<Renderer>(out var renderer)) renderer.sharedMaterial = invisible;
             }
         }

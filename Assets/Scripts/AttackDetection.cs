@@ -15,11 +15,14 @@ public class AttackDetection : MonoBehaviour {
         sphere.radius = scale;
     }
     private void OnTriggerEnter(Collider other) {
-        canHit = true;
+        if (other.CompareTag("Player")) {
+            Debug.Log("object entered attack radius: " + other.gameObject.name);
+            canHit = true;
+        }
     }
 
     private void OnTriggerStay(Collider c) {
-        if (c.CompareTag("Player") && c.name != "Collider" && canHit) {
+        if (c.CompareTag("Player") && canHit) {
             Debug.Log(c);
             animate.Attack();
             StartCoroutine(Waiter());
