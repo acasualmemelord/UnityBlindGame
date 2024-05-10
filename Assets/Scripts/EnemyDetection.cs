@@ -5,11 +5,19 @@ using UnityEngine;
 public class EnemyDetection : MonoBehaviour {
     public Material invisible;
     public Material visible;
+    public PlayerStats playerStats;
+    public SphereCollider sphere;
+
+    private void Start() {
+        float scale = playerStats.stats[StatNames.SightRadius];
+        sphere.radius = scale;
+    }
 
     private void OnTriggerEnter(Collider c) {
         if (c.CompareTag("Enemy")) {
-            var enemy = c.transform.parent;
-            for (int i = 1; i < c.transform.parent.childCount - 1; i++) {
+            var enemy = c.transform;
+            Debug.Log(enemy.name);
+            for (int i = 1; i < c.transform.childCount - 1; i++) {
                 if(enemy.GetChild(i).TryGetComponent<Renderer>(out var renderer)) renderer.sharedMaterial = visible;
             }
         }
@@ -17,8 +25,8 @@ public class EnemyDetection : MonoBehaviour {
 
     private void OnTriggerExit(Collider c) {
         if (c.CompareTag("Enemy")) {
-            var enemy = c.transform.parent;
-            for (int i = 1; i < c.transform.parent.childCount - 1; i++) {
+            var enemy = c.transform;
+            for (int i = 1; i < c.transform.childCount - 1; i++) {
                 if (enemy.GetChild(i).TryGetComponent<Renderer>(out var renderer)) renderer.sharedMaterial = invisible;
             }
         }

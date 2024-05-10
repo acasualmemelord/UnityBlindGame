@@ -17,7 +17,7 @@ public class EnemySystem : MonoBehaviour {
     public bool dying = false;
     
     private void Start() {
-        playerDetection = transform.parent.GetComponentInChildren<PlayerDetection>();
+        playerDetection = transform.GetComponentInChildren<PlayerDetection>();
         animate = transform.GetComponent<Animate>();
         hp = enemyStats.stats[StatNames.MaxHealth];
         thisStats = enemyStats;
@@ -35,7 +35,7 @@ public class EnemySystem : MonoBehaviour {
             transform.LookAt(newtarget);
             animate.Chase();
 
-            Debug.Log(enemyStats.stats[StatNames.Speed] + " " + transform.forward);
+            //Debug.Log(enemyStats.stats[StatNames.Speed] + " " + transform.forward);
 
             controller.SimpleMove(enemyStats.stats[StatNames.Speed] * transform.forward);
         }

@@ -34,8 +34,10 @@ public class Move : MonoBehaviour {
         Collider collider = hit.colliderStatus;
         if (collider && !collider.CompareTag("Invisible") && !collider.CompareTag("Player")) {
             if (collider.CompareTag("Enemy")) {
-                GameObject enemy = collider.gameObject.transform.parent.gameObject;
-                EnemySystem system = enemy.GetComponentInChildren<EnemySystem>();
+                GameObject enemy = collider.gameObject;
+                EnemySystem system;
+                if(enemy.name == "Hitbox") system = enemy.GetComponentInParent<EnemySystem>();
+                else system = enemy.GetComponentInChildren<EnemySystem>();
                 EnemyStats enemyStats = system.thisStats;
                 enemyStats.Damage(system.hp, playerStats.stats[StatNames.Magic] - enemyStats.stats[StatNames.Resilience], out system.hp);
                 //Debug.Log(system.hp + " " + playerStats.stats[StatNames.Magic] + " " + enemyStats.stats[StatNames.Resilience]);

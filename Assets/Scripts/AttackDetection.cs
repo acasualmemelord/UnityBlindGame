@@ -5,21 +5,22 @@ using UnityEngine;
 public class AttackDetection : MonoBehaviour {
     public EnemyStats enemyStats;
     public PlayerStats playerStats;
-    public GameObject sphere;
+    public SphereCollider sphere;
     public static bool canHit = true;
     public Animate animate;
 
     private void Start() {
-        animate = transform.parent.GetComponentInChildren<Animate>();
+        animate = transform.GetComponentInChildren<Animate>();
         float scale = enemyStats.stats[StatNames.AttackRadius];
-        sphere.transform.localScale = new Vector3(scale, scale, scale);
+        sphere.radius = scale;
     }
     private void OnTriggerEnter(Collider other) {
         canHit = true;
     }
 
     private void OnTriggerStay(Collider c) {
-        if (c.name == "First Person Player" && canHit) {
+        if (c.CompareTag("Player") && c.name != "Collider" && canHit) {
+            Debug.Log(c);
             animate.Attack();
             StartCoroutine(Waiter());
         }
@@ -27,6 +28,8 @@ public class AttackDetection : MonoBehaviour {
     private IEnumerator Waiter() {
         canHit = false;
         playerStats.Damage(enemyStats.stats[StatNames.Attack] - playerStats.stats[StatNames.Defense]);
+        Debug.Log("hit by " + transform.name);
+        Debug.Break();
         yield return new WaitForSeconds(enemyStats.stats[StatNames.AttackInterval]);
         canHit = true;
     }

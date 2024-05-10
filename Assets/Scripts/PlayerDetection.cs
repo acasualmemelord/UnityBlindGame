@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour {
     public EnemyStats enemyStats;
-    public GameObject sphere;
+    public SphereCollider sphere;
     public bool found = false;
+
     private void Start() {
         float scale = enemyStats.stats[StatNames.SightRadius];
-        sphere.transform.localScale = new Vector3(scale, scale, scale);
+        sphere.radius = scale;
     }
 
     private void OnTriggerEnter(Collider c) {
@@ -18,5 +19,9 @@ public class PlayerDetection : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider c) { found = false; }
+    private void OnTriggerExit(Collider c) {
+        if (c.CompareTag("Player")) {
+            found = false;
+        }
+    }
 }

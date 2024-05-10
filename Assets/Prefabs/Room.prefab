@@ -58,7 +58,7 @@ MonoBehaviour:
   - {fileID: 5050065672077086203}
   - {fileID: 2857274464193085466}
   - {fileID: 3366666893126319890}
-  enemy: {fileID: 1676363311581559929, guid: 5cbfc069c42c78f42b32f4c4f3e9a254, type: 3}
+  enemy: {fileID: 2797504618207632556, guid: 5dcb321bf9e3441428e67916219dedfa, type: 3}
   player: {fileID: 0}
 --- !u!1 &1630294120935681763
 GameObject:
