@@ -10,20 +10,17 @@ public class AttackDetection : MonoBehaviour {
     public Animate animate;
 
     private void Start() {
-        animate = transform.GetComponentInChildren<Animate>();
         float scale = enemyStats.stats[StatNames.AttackRadius];
         sphere.radius = scale;
     }
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            Debug.Log("object entered attack radius: " + other.gameObject.name);
             canHit = true;
         }
     }
 
     private void OnTriggerStay(Collider c) {
         if (c.CompareTag("Player") && canHit) {
-            Debug.Log(c);
             animate.Attack();
             StartCoroutine(Waiter());
         }
@@ -31,8 +28,6 @@ public class AttackDetection : MonoBehaviour {
     private IEnumerator Waiter() {
         canHit = false;
         playerStats.Damage(enemyStats.stats[StatNames.Attack] - playerStats.stats[StatNames.Defense]);
-        Debug.Log("hit by " + transform.name);
-        Debug.Break();
         yield return new WaitForSeconds(enemyStats.stats[StatNames.AttackInterval]);
         canHit = true;
     }

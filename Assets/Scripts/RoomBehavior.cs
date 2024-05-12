@@ -15,12 +15,12 @@ public class RoomBehavior : MonoBehaviour {
         }
     }
 
-    public void SpawnEnemies() {
+    public void SpawnEnemies(bool endRoom) {
         int enemyID = 0;
-        for (int i = 1; i < 5; i ++) {
+        for (int i = 1; i < (endRoom ? transform.childCount : 5); i ++) {
             var rand = Random.Range(0, 2);
             var pos = transform.GetChild(0).GetChild(i);
-            if (rand > 0) {
+            if (rand > 0 || endRoom) {
                 var newEnemy = Instantiate(enemy, pos.position, Quaternion.identity);
                 newEnemy.transform.GetComponentInChildren<EnemySystem>().player = player;
                 newEnemy.name = "Enemy " + enemyID++ + " of " + transform.name;

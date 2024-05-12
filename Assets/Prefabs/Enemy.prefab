@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 4269134341808048018}
   - component: {fileID: 6381977456788667444}
   - component: {fileID: 1184763188188456214}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ViewSphere
   m_TagString: Invisible
   m_Icon: {fileID: 0}
@@ -1085,7 +1085,7 @@ GameObject:
   - component: {fileID: 7956451535407022144}
   - component: {fileID: 2862324294323199054}
   - component: {fileID: 3267435787368396904}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: AttackSphere
   m_TagString: Invisible
   m_Icon: {fileID: 0}
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: 9c9e42cc8a723524494a06046bb87049, type: 2}
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
   sphere: {fileID: 3267435787368396904}
-  animate: {fileID: 0}
+  animate: {fileID: 7377682305088584883}
 --- !u!143 &1304642223583556228
 CharacterController:
   m_ObjectHideFlags: 0

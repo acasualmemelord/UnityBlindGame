@@ -18,7 +18,6 @@ public class EnemyDetection : MonoBehaviour {
             var enemy = c.transform;
             if (enemy.childCount == 1) enemy = enemy.parent;
             else enemy = enemy.GetChild(0);
-            Debug.Log("detected " + enemy + " " + enemy.childCount);
             for (int i = 1; i < enemy.childCount; i++) {
                 if(enemy.GetChild(i).TryGetComponent<Renderer>(out var renderer)) renderer.sharedMaterial = visible;
             }
@@ -30,7 +29,6 @@ public class EnemyDetection : MonoBehaviour {
             var enemy = c.transform;
             if (enemy.childCount == 1) enemy = enemy.parent;
             else enemy = enemy.GetChild(0);
-            Debug.Log("detected " + enemy + " " + enemy.childCount);
             for (int i = 1; i < enemy.childCount; i++) {
                 if (enemy.GetChild(i).TryGetComponent<Renderer>(out var renderer)) renderer.sharedMaterial = invisible;
             }

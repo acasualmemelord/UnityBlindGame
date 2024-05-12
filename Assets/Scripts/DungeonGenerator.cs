@@ -114,7 +114,7 @@ public class DungeonGenerator : MonoBehaviour {
                     newRoom.UpdateRoom(currentRoom.status);
                     newRoom.GetComponent<RoomBehavior>().player = player;
                     newRoom.name += " " + i + " - " + j;
-                    if (i != 0 && j != 0) newRoom.SpawnEnemies();
+                    if (i != 0 && j != 0) newRoom.SpawnEnemies(false);
                 }
             }
         }
