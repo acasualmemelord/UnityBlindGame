@@ -709,7 +709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 5, y: 5}
   startPos: 0
-  room: {fileID: 1036044429276704608, guid: cec6332b4d9cf48428c66a0419235eb2, type: 3}
+  room: {fileID: 1036044429276704608, guid: 135f113f707c2bc4baf1ba8c482b5439, type: 3}
+  endRoom: {fileID: 1036044429276704608, guid: cec6332b4d9cf48428c66a0419235eb2, type: 3}
   offset: {x: 30, y: 30}
   player: {fileID: 1577832430}
 --- !u!4 &649299363
