@@ -9,6 +9,7 @@ public class EnemySystem : MonoBehaviour {
     public CharacterController controller;
     bool lookat = false;
     public GameObject player;
+    public PlayerStats playerStats;
     public EnemyStats enemyStats;
     public EnemyStats thisStats;
     public PlayerDetection playerDetection;
@@ -27,6 +28,7 @@ public class EnemySystem : MonoBehaviour {
         if (hp <= 0 && !dying) {
             dying = true;
             animate.Die();
+            playerStats.GainMana(10);
         }
         lookat = playerDetection.found;
         if (lookat) {
@@ -34,8 +36,6 @@ public class EnemySystem : MonoBehaviour {
             newtarget.y = transform.position.y;
             transform.LookAt(newtarget);
             animate.Chase();
-
-            //Debug.Log(enemyStats.stats[StatNames.Speed] + " " + transform.forward);
 
             controller.SimpleMove(enemyStats.stats[StatNames.Speed] * transform.forward);
         }

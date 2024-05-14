@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4cbdcfa4670c1f4dafdac4f35cdb938, type: 3}
-  m_Name: Slime
+  m_Name: Zombie
   m_EditorClassIdentifier: 
   stats:
     list:

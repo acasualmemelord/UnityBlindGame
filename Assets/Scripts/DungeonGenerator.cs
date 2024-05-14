@@ -17,6 +17,7 @@ public class DungeonGenerator : MonoBehaviour {
     List<Room> floor;
     public GameObject player;
     void Start() {
+        Cursor.lockState = CursorLockMode.Locked;
         MazeGenerator();
     }
 
@@ -116,14 +117,14 @@ public class DungeonGenerator : MonoBehaviour {
                         newRoom.UpdateRoom(currentRoom.status);
                         newRoom.GetComponent<RoomBehavior>().player = player;
                         newRoom.name += " " + i + " - " + j;
-                        if (i != 0 && j != 0) newRoom.SpawnEnemies(true);
+                        newRoom.SpawnEnemies(true);
                     } 
                     else {
                         var newRoom = Instantiate(room, new Vector3(i * offset.x, 2.5f, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
                         newRoom.UpdateRoom(currentRoom.status);
                         newRoom.GetComponent<RoomBehavior>().player = player;
                         newRoom.name += " " + i + " - " + j;
-                        if (i != 0 && j != 0) newRoom.SpawnEnemies(false);
+                        if (i != 0 || j != 0) newRoom.SpawnEnemies(false);
                     }
                 }
             }

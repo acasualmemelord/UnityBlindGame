@@ -21,15 +21,14 @@ public class Ricochet : MonoBehaviour {
     void Update() {
         Collider collider = hit.colliderStatus;
         if (collider && !collider.CompareTag("Invisible") && !collider.CompareTag("Player")) {
-            if (collider.name == "EnemyBody") {
-                GameObject enemy = collider.gameObject.transform.parent.gameObject;
-                EnemySystem system = enemy.GetComponent<EnemySystem>();
+            if (collider.CompareTag("Enemy")) {
+                GameObject enemy = collider.gameObject;
+                EnemySystem system;
+                if (enemy.name == "Hitbox") system = enemy.GetComponentInParent<EnemySystem>();
+                else system = enemy.GetComponentInChildren<EnemySystem>();
                 EnemyStats enemyStats = enemy.GetComponent<EnemySystem>().thisStats;
-                enemy.GetComponent<Rigidbody>().AddForce(1000f * transform.forward);
                 enemyStats.Damage(system.hp, playerStats.stats[StatNames.Magic] - enemyStats.stats[StatNames.Resilience], out system.hp);
-                Debug.Log(enemyStats.stats[StatNames.Health] + " " + playerStats.stats[StatNames.Magic] + " " + enemyStats.stats[StatNames.Resilience]);
             }
-            else Debug.Log(collider.name);
             if (bounces == 0) Destroy(gameObject);
             else if (prev && collider != prev) {
                 rb.AddForce(speed * multiplier * 0.25f * transform.forward);

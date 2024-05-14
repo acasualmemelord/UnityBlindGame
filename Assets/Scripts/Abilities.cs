@@ -8,11 +8,15 @@ public class Abilities : MonoBehaviour {
 
     public GameObject meditateCooldown;
     public int meditateCost = 20;
+    public int meditateTime = 4;
+    public int meditateCooldownTime = 8;
     bool unblind = false;
     bool meditateCharged = true;
 
     public GameObject forcefieldCooldown;
-    public int forcefieldCost = 20;
+    public int forcefieldCost = 10;
+    public int forcefieldTime = 4;
+    public int forcefieldCooldownTime = 4;
     public GameObject forcefield;
     public GameObject forcefieldPoint;
     public GameObject userCamera;
@@ -20,6 +24,8 @@ public class Abilities : MonoBehaviour {
 
     public GameObject ricochetCooldown;
     public int ricochetCost = 10;
+    public int ricochetTime = 5;
+    public int ricochetCooldownTime = 4;
     public GameObject ricochet;
     public GameObject original;
     public GameObject staff;
@@ -75,30 +81,30 @@ public class Abilities : MonoBehaviour {
         playerMovement.speed = speed;
         unblind = true;
         meditateCharged = false;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(meditateTime);
         meditateCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         unblind = false;
-        StartCoroutine(ScaleOverTime(meditateCooldown, 4));
+        StartCoroutine(ScaleOverTime(meditateCooldown, meditateCooldownTime));
         meditateCharged = true;
     }
 
     private IEnumerator Forcefield() {
         forcefieldCharged = false;
         var deployedForcefield = Instantiate(forcefield, forcefieldPoint.transform.position, forcefield.transform.localRotation, null);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(forcefieldTime);
         Destroy(deployedForcefield);
         forcefieldCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        StartCoroutine(ScaleOverTime(forcefieldCooldown, 4));
+        StartCoroutine(ScaleOverTime(forcefieldCooldown, forcefieldCooldownTime));
         forcefieldCharged = true;
     }
     private IEnumerator Ricochet() {
         ricochetCharged = false;
         Attack attack = staff.GetComponentInChildren<Attack>();
         attack.projectile = ricochet;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(ricochetTime);
         attack.projectile = original;
         ricochetCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        StartCoroutine(ScaleOverTime(ricochetCooldown, 4));
+        StartCoroutine(ScaleOverTime(ricochetCooldown, ricochetCooldownTime));
         ricochetCharged = true;
     }
 
