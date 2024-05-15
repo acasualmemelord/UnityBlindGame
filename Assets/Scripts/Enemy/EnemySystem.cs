@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemySystem : MonoBehaviour {
@@ -22,6 +23,17 @@ public class EnemySystem : MonoBehaviour {
         animate = transform.GetComponent<Animate>();
         hp = enemyStats.stats[StatNames.MaxHealth];
         thisStats = enemyStats;
+
+        GameObject go = new("Target");
+        Vector3 sourcePostion = transform.position;//The position you want to place your agent
+        if (NavMesh.SamplePosition(sourcePostion, out NavMeshHit closestHit, 500, 1)) {
+            go.transform.position = closestHit.position;
+            go.AddComponent<NavMeshAgent>();
+            //TODO
+        }
+        else {
+            Debug.Log("...");
+        }
     }
 
     void Update() {

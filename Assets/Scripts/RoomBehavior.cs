@@ -17,7 +17,6 @@ public class RoomBehavior : MonoBehaviour {
 
     public void SpawnEnemies(bool endRoom) {
         int enemyID = 0;
-        Debug.Log(transform.GetChild(0) + " " + transform.GetChild(0).childCount);
         for (int i = 1; i < (endRoom ? transform.GetChild(0).childCount : 5); i ++) {
             var rand = Random.Range(0, 2);
             var pos = transform.GetChild(0).GetChild(i);

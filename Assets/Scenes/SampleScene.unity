@@ -2192,13 +2192,19 @@ MonoBehaviour:
   RoomGenerator: {fileID: 649299361}
   meditateCooldown: {fileID: 526608484}
   meditateCost: 20
+  meditateTime: 4
+  meditateCooldownTime: 8
   forcefieldCooldown: {fileID: 699490918}
   forcefieldCost: 20
+  forcefieldTime: 4
+  forcefieldCooldownTime: 4
   forcefield: {fileID: 6922438529585482604, guid: 1dd273ab264c4654d9bc46033416bce4, type: 3}
   forcefieldPoint: {fileID: 1262206985}
   userCamera: {fileID: 963194225}
   ricochetCooldown: {fileID: 1599776184}
   ricochetCost: 10
+  ricochetTime: 5
+  ricochetCooldownTime: 4
   ricochet: {fileID: 8125436370720696565, guid: 01a0402646c92aa4f8e38ab5fb1bf809, type: 3}
   original: {fileID: 8125436370720696565, guid: 66924ae80aafef646a5a06bcbfc8996c, type: 3}
   staff: {fileID: 1772168433}
