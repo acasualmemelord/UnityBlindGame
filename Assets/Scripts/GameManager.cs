@@ -1,10 +1,25 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
-    public void GameOver() {
-        // Loads the game over scene
-        SceneManager.UnloadSceneAsync("SampleScene");
+public class GameManager : MonoBehaviour
+{
+    public static void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public static void LoadSettings()
+    {
+        SceneManager.LoadScene("SettingsScene");
+    }
+
+    public static void LoadSampleScene()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public static void LoadGameOver()
+    {
         SceneManager.LoadScene("GameOverScene");
     }
 }

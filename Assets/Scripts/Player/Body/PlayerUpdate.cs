@@ -50,7 +50,7 @@ public class PlayerUpdate : MonoBehaviour {
         }
 
         if (playerStats.stats[StatNames.Health] <= 0) {
-            gameManager.GameOver();
+            GameManager.LoadGameOver();
         }
     }
     private IEnumerator HPWaiter() {

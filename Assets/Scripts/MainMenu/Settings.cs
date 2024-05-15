@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
@@ -7,16 +6,44 @@ public class Settings : MonoBehaviour
     public Slider brightnessSlider;
     public Slider musicSlider;
     public Slider soundFXSlider;
+    public Button cancelButton;
+    public Button saveButton;
+    public Button backButton;
+
     public SoundManager soundManager;
+
     private float originalBrightness;
     private float originalMusicVolume;
     private float originalSoundFXVolume;
 
     private void Start()
     {
-        originalMusicVolume = musicSlider.value;
-        originalSoundFXVolume = soundFXSlider.value;
-        originalBrightness = brightnessSlider.value;
+        // Loads saved settings or set default values
+        originalBrightness = PlayerPrefs.GetFloat("Brightness", 1f);
+        originalMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        originalSoundFXVolume = PlayerPrefs.GetFloat("SoundFXVolume", 1f);
+
+        // Sets initial slider values
+        brightnessSlider.value = originalBrightness;
+        musicSlider.value = originalMusicVolume;
+        soundFXSlider.value = originalSoundFXVolume;
+
+        ApplySettings();
+
+        // Adds event listeners
+        cancelButton.onClick.AddListener(CancelChanges);
+        saveButton.onClick.AddListener(SaveChanges);
+        backButton.onClick.AddListener(BackToMainMenu);
+        brightnessSlider.onValueChanged.AddListener(AdjustBrightness);
+        musicSlider.onValueChanged.AddListener(AdjustMusicVolume);
+        soundFXSlider.onValueChanged.AddListener(AdjustSoundFXVolume);
+    }
+
+    public void ApplySettings()
+    {
+        AdjustBrightness(brightnessSlider.value);
+        AdjustMusicVolume(musicSlider.value);
+        AdjustSoundFXVolume(soundFXSlider.value);
     }
 
     public void AdjustBrightness(float brightnessValue)
@@ -30,15 +57,14 @@ public class Settings : MonoBehaviour
 
     public void AdjustMusicVolume(float volume)
     {
-        AudioManager audioManager = FindObjectOfType<AudioManager>();
-        if (audioManager != null)
+        if (soundManager != null)
         {
             // Adjusts the music volume based on the slider value
-            audioManager.MusicVolume(volume);
+            soundManager.MusicVolume(volume);
         }
         else
         {
-            Debug.LogWarning("AudioManager not found.");
+            Debug.LogWarning("SoundManager reference is missing!");
         }
     }
 
@@ -57,24 +83,32 @@ public class Settings : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        // Loads the Main Menu scene
-        SceneManager.LoadScene("MainMenu");
+        // Load the main menu scene
+        GameManager.LoadMainMenu();
     }
 
     public void CancelChanges()
     {
-        // Resets the values of the sliders to their original values
+        // Reset slider values to the previously saved settings
         brightnessSlider.value = originalBrightness;
         musicSlider.value = originalMusicVolume;
         soundFXSlider.value = originalSoundFXVolume;
+
+        // Apply settings after canceling changes
+        ApplySettings();
     }
 
     public void SaveChanges()
     {
-        // Saves the current values of the sliders
-        PlayerPrefs.SetFloat("Brightness", brightnessSlider.value);
-        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
-        PlayerPrefs.SetFloat("SoundFXVolume", soundFXSlider.value);
+        // Save the current slider values
+        originalBrightness = brightnessSlider.value;
+        originalMusicVolume = musicSlider.value;
+        originalSoundFXVolume = soundFXSlider.value;
+
+        // Store the values using PlayerPrefs
+        PlayerPrefs.SetFloat("Brightness", originalBrightness);
+        PlayerPrefs.SetFloat("MusicVolume", originalMusicVolume);
+        PlayerPrefs.SetFloat("SoundFXVolume", originalSoundFXVolume);
         PlayerPrefs.Save();
     }
 }

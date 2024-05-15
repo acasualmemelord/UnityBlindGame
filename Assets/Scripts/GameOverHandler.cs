@@ -5,13 +5,11 @@ public class GameOverHandler : MonoBehaviour
 {
     public void Restart()
     {
-        // Loads the sample game scene
-        SceneManager.LoadScene("SampleScene");
+        GameManager.LoadSampleScene();
     }
 
     public void MainMenu()
     {
-        // Loads the main menu scene
-        SceneManager.LoadScene("MainMenuScene");
+        GameManager.LoadMainMenu();
     }
 }

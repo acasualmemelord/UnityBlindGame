@@ -132,6 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 79592641}
+  - component: {fileID: 79592643}
+  - component: {fileID: 79592642}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -161,6 +163,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &79592642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79592640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8895cf618c5f5499aa9b802c12c14db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &79592643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79592640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8179ccc42f7f0495584882defffbe4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &102703568
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +275,6 @@ GameObject:
   - component: {fileID: 242499622}
   - component: {fileID: 242499621}
   - component: {fileID: 242499624}
-  - component: {fileID: 242499625}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -322,8 +347,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 242499624}
-        m_TargetAssemblyTypeName: StartGame, Assembly-CSharp
-        m_MethodName: StartTheGame
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -380,21 +405,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 242499619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 987f2cb1a600f4d22bcc478e2b8816ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 21670a81805644cdfad8f5ee9144e8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &242499625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242499619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 987f2cb1a600f4d22bcc478e2b8816ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  playButton: {fileID: 242499621}
+  settingsButton: {fileID: 2102497905}
+  exitButton: {fileID: 1506312966}
 --- !u!1 &327758538
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,56 +533,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2102497904}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1028458539
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1028458541}
-  - component: {fileID: 1028458540}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1028458540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028458539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b8e6b469a6e94c42870ddee8afe7b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 0}
-  swingAnimationTrigger: Swing
-  swingDuration: 0.5
-  damageAmount: 10
-  swordPrefab: {fileID: 0}
-  swordInstance: {fileID: 0}
---- !u!4 &1028458541
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028458539}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1121387835
 GameObject:
@@ -1087,7 +1053,6 @@ GameObject:
   - component: {fileID: 1506312967}
   - component: {fileID: 1506312966}
   - component: {fileID: 1506312969}
-  - component: {fileID: 1506312970}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1160,8 +1125,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1506312969}
-        m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
-        m_MethodName: ExitTheGame
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1218,21 +1183,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1506312964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6979bd38467442a8de6a57a4d23e16, type: 3}
+  m_Script: {fileID: 11500000, guid: 21670a81805644cdfad8f5ee9144e8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1506312970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506312964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6979bd38467442a8de6a57a4d23e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  playButton: {fileID: 242499621}
+  settingsButton: {fileID: 2102497905}
+  exitButton: {fileID: 1506312966}
 --- !u!1 &1534747438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,13 +1570,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2102497903}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2102497908}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1673,19 +1629,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2102497903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9351e313aa41a49838242cbd16cb037b, type: 3}
+  m_Script: {fileID: 11500000, guid: 21670a81805644cdfad8f5ee9144e8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brightnessSlider: {fileID: 0}
-  musicToggle: {fileID: 0}
-  soundFXToggle: {fileID: 0}
-  soundManager: {fileID: 0}
+  playButton: {fileID: 242499621}
+  settingsButton: {fileID: 2102497905}
+  exitButton: {fileID: 1506312966}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 327758541}
   - {fileID: 1863811255}
-  - {fileID: 1028458541}
   - {fileID: 1310357301}
   - {fileID: 1534747441}

@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // Fields
     public AudioClip backgroundMusic;
-    private AudioSource audioSource;
-    private static SoundManager _instance;
     private AudioSource musicAudioSource;
+    private AudioSource soundFXAudioSource;
+
+    private static SoundManager _instance;
 
     private void Awake()
     {
@@ -21,10 +21,32 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        musicAudioSource = GetComponent<AudioSource>();
+        // Find the AudioSource components for music and sound effects
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length >= 2)
+        {
+            musicAudioSource = audioSources[0];
+            soundFXAudioSource = audioSources[1];
+        }
+        else
+        {
+            Debug.LogWarning("SoundManager requires at least two AudioSource components!");
+        }
     }
 
     public void SoundFXVolume(float volume)
+    {
+        if (soundFXAudioSource != null)
+        {
+            soundFXAudioSource.volume = volume;
+        }
+        else
+        {
+            Debug.LogWarning("SoundManager sound effects AudioSource component is missing!");
+        }
+    }
+
+    public void MusicVolume(float volume)
     {
         if (musicAudioSource != null)
         {
@@ -32,35 +54,32 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("AudioManager AudioSource component is missing!");
+            Debug.LogWarning("SoundManager music AudioSource component is missing!");
         }
     }
 
     public static SoundManager Instance
     {
-        // Accessess instance object
         get { return _instance; }
     }
 
     private void Start()
     {
-        // Retrieves audio and calls the method to play it
-        audioSource = GetComponent<AudioSource>();
         PlayBackgroundMusic();
     }
 
     public void PlayBackgroundMusic()
     {
-        if (backgroundMusic != null)
+        if (backgroundMusic != null && musicAudioSource != null)
         {
             // Plays background music continuously
-            audioSource.clip = backgroundMusic;
-            audioSource.loop = true;
-            audioSource.Play();
+            musicAudioSource.clip = backgroundMusic;
+            musicAudioSource.loop = true;
+            musicAudioSource.Play();
         }
         else
         {
-            Debug.LogWarning("Background music clip is not assigned.");
+            Debug.LogWarning("Background music clip or AudioSource is not assigned.");
         }
     }
 }

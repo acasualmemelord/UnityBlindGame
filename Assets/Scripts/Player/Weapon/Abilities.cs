@@ -78,7 +78,7 @@ public class Abilities : MonoBehaviour {
         float speed = playerStats.stats[StatNames.Speed];
         playerMovement.speed = 0;
         yield return new WaitForSeconds(2);
-        playerMovement.speed = speed;
+        playerMovement.speed = (int)speed;
         unblind = true;
         meditateCharged = false;
         yield return new WaitForSeconds(meditateTime);

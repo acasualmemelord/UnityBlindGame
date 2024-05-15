@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public Button playButton;
+    public Button settingsButton;
+    public Button exitButton;
+
+    private void Start()
     {
-        // Loads the game scene by name
-        SceneManager.LoadScene("SampleScene");
+        playButton.onClick.AddListener(PlayGame);
+        settingsButton.onClick.AddListener(OpenSettings);
+        exitButton.onClick.AddListener(ExitGame);
     }
 
-    public void Settings()
+    public void PlayGame()
     {
-        // Loads the Settings menu
-        SceneManager.LoadScene("SettingsScene");
+        GameManager.LoadSampleScene();
+    }
+
+    public void OpenSettings()
+    {
+        GameManager.LoadSettings();
     }
 
     public void ExitGame()
     {
-        // Exits the game
         Application.Quit();
     }
 }
