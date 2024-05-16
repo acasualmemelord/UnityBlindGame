@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -351,7 +351,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &61405814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,7 +984,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &561280889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1271,6 +1271,7 @@ RectTransform:
   - {fileID: 439489778}
   - {fileID: 1995399251}
   - {fileID: 1535982018}
+  - {fileID: 938928741}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1293,10 +1294,10 @@ MonoBehaviour:
   brightnessSlider: {fileID: 1412278813}
   musicSlider: {fileID: 1524442264}
   soundFXSlider: {fileID: 1072090213}
-  cancelButton: {fileID: 0}
-  saveButton: {fileID: 0}
-  backButton: {fileID: 0}
-  soundManager: {fileID: 0}
+  cancelButton: {fileID: 61405813}
+  saveButton: {fileID: 561280888}
+  backButton: {fileID: 1898213360}
+  soundManager: {fileID: 938928740}
 --- !u!1 &659975197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,7 +1506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048787645b1db4205899573827804267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 8300000, guid: 46c744b10a48c2440ad5c1f4d6183ab0, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 48ba0d2bf4ba0d441b19627ca36bf913, type: 3}
 --- !u!4 &938928741
 Transform:
   m_ObjectHideFlags: 0
@@ -1514,12 +1515,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938928739}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960, y: -537, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 649554194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &943621981
 GameObject:
@@ -1998,7 +1999,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!1 &1145026488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,7 +2623,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!1 &1524442262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,7 +2725,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!1 &1535982017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3274,4 +3275,3 @@ SceneRoots:
   - {fileID: 1219965843}
   - {fileID: 649554194}
   - {fileID: 659975200}
-  - {fileID: 938928741}

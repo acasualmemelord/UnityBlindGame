@@ -14,11 +14,12 @@ public class SoundManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         // Find the AudioSource components for music and sound effects
@@ -30,7 +31,9 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("SoundManager requires at least two AudioSource components!");
+            // Create the necessary AudioSource components dynamically
+            musicAudioSource = gameObject.AddComponent<AudioSource>();
+            soundFXAudioSource = gameObject.AddComponent<AudioSource>();
         }
     }
 

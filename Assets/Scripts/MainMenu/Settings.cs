@@ -37,6 +37,11 @@ public class Settings : MonoBehaviour
         brightnessSlider.onValueChanged.AddListener(AdjustBrightness);
         musicSlider.onValueChanged.AddListener(AdjustMusicVolume);
         soundFXSlider.onValueChanged.AddListener(AdjustSoundFXVolume);
+
+        if (soundManager == null)
+        {
+            soundManager = FindObjectOfType<SoundManager>();
+        }
     }
 
     public void ApplySettings()
@@ -57,28 +62,12 @@ public class Settings : MonoBehaviour
 
     public void AdjustMusicVolume(float volume)
     {
-        if (soundManager != null)
-        {
-            // Adjusts the music volume based on the slider value
-            soundManager.MusicVolume(volume);
-        }
-        else
-        {
-            Debug.LogWarning("SoundManager reference is missing!");
-        }
+        SoundManager.Instance.MusicVolume(volume);
     }
 
     public void AdjustSoundFXVolume(float volume)
     {
-        if (soundManager != null)
-        {
-            // Adjusts the sound effects volume based on the slider value
-            soundManager.SoundFXVolume(volume);
-        }
-        else
-        {
-            Debug.LogWarning("SoundManager reference is missing!");
-        }
+        SoundManager.Instance.SoundFXVolume(volume);
     }
 
     public void BackToMainMenu()
