@@ -22,6 +22,7 @@ public class DungeonGenerator : MonoBehaviour {
     public GenerateNavLinks generateNavLinks;
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         MazeGenerator();
     }
 

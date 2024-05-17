@@ -26,7 +26,7 @@ public class Ricochet : MonoBehaviour {
                 EnemySystem system;
                 if (enemy.name == "Hitbox") system = enemy.GetComponentInParent<EnemySystem>();
                 else system = enemy.GetComponentInChildren<EnemySystem>();
-                EnemyStats enemyStats = enemy.GetComponent<EnemySystem>().thisStats;
+                EnemyStats enemyStats = system.thisStats;
                 enemyStats.Damage(system.hp, playerStats.stats[StatNames.Magic] - enemyStats.stats[StatNames.Resilience], out system.hp);
             }
             if (bounces == 0) Destroy(gameObject);

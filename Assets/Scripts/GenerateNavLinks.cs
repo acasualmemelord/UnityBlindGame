@@ -19,7 +19,6 @@ public class GenerateNavLinks : MonoBehaviour {
     public float wallConnectThreshold;
 
     public void DoGenerateLinks() {
-        Debug.Log(floors);
         ConnectThemAll();
     }
 
