@@ -13,8 +13,10 @@ public class AttackDetection : MonoBehaviour {
         float scale = enemyStats.stats[StatNames.AttackRadius];
         sphere.radius = scale;
     }
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
+    private void OnTriggerEnter(Collider c) {
+        if (c.CompareTag("Environment") || c.CompareTag("Enemy")) return;
+        if (c.transform.parent != null && c.transform.parent.CompareTag("Enemy")) return;
+        if (c.CompareTag("Player")) {
             canHit = true;
         }
     }

@@ -9,6 +9,7 @@ public class PlayerUpdate : MonoBehaviour {
     public Transform manaBar;
     public Transform staminaBar;
     public GameManager gameManager;
+    public AudioSource audioSource;
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
@@ -50,6 +51,7 @@ public class PlayerUpdate : MonoBehaviour {
         }
 
         if (playerStats.stats[StatNames.Health] <= 0) {
+            audioSource.Play();
             GameManager.LoadGameOver();
         }
     }

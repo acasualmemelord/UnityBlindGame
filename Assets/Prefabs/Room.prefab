@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1483972046450174250}
   m_Layer: 0
   m_Name: Room
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   - {fileID: 3366666893126319890}
   enemy: {fileID: 2797504618207632556, guid: 5dcb321bf9e3441428e67916219dedfa, type: 3}
   player: {fileID: 0}
+  navSurface: {fileID: 0}
   status: 00000000
 --- !u!1 &1630294120935681763
 GameObject:

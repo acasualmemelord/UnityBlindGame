@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
     public CharacterController controller;
     public PlayerStats playerStats;
+    public AudioSource audioSource;
     public float multiplier = 1f;
     public float gravity = -9.81f;
 
@@ -34,7 +35,7 @@ public class PlayerMovement : MonoBehaviour {
         if (isSprinting && playerStats.UseStamina(0.1f)) multiplier = playerStats.stats[StatNames.SprintMultiplier];
         else multiplier = 1f;
         Vector3 move = transform.right * x + transform.forward * z;
-
+        if (move != Vector3.zero) audioSource.Play();
         controller.Move(multiplier * playerStats.stats[StatNames.Speed] * Time.deltaTime * move);
 
         if(Input.GetButtonDown("Jump") && isGrounded) {

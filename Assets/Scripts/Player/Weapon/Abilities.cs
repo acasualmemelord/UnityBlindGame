@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Abilities : MonoBehaviour {
     public GameObject RoomGenerator;
+    public AudioSource audioSource;
 
     public GameObject meditateCooldown;
     public int meditateCost = 20;
@@ -75,6 +76,7 @@ public class Abilities : MonoBehaviour {
     }
 
     private IEnumerator Meditate() {
+        audioSource.Play();
         float speed = playerStats.stats[StatNames.Speed];
         playerMovement.speed = 0;
         yield return new WaitForSeconds(2);
