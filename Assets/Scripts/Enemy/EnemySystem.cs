@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,8 +9,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemySystem : MonoBehaviour {
     public CharacterController controller;
-    bool lookat = false;
     public GameObject player;
+    public GameObject eyeLine;
     public PlayerStats playerStats;
     public EnemyStats enemyStats;
     public EnemyStats thisStats;
@@ -23,17 +24,6 @@ public class EnemySystem : MonoBehaviour {
         animate = transform.GetComponent<Animate>();
         hp = enemyStats.stats[StatNames.MaxHealth];
         thisStats = enemyStats;
-
-        GameObject go = new("Target");
-        Vector3 sourcePostion = transform.position;//The position you want to place your agent
-        if (NavMesh.SamplePosition(sourcePostion, out NavMeshHit closestHit, 500, 1)) {
-            go.transform.position = closestHit.position;
-            go.AddComponent<NavMeshAgent>();
-            //TODO
-        }
-        else {
-            Debug.Log("...");
-        }
     }
 
     void Update() {
@@ -42,14 +32,16 @@ public class EnemySystem : MonoBehaviour {
             animate.Die();
             playerStats.GainMana(10);
         }
-        lookat = playerDetection.found;
-        if (lookat) {
+        
+        if (playerDetection.found) {
             Vector3 newtarget = player.transform.position;
             newtarget.y = transform.position.y;
             transform.LookAt(newtarget);
-            animate.Chase();
-
-            controller.SimpleMove(enemyStats.stats[StatNames.Speed] * transform.forward);
+            _ = Physics.Raycast(eyeLine.transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit);
+            if (hit.collider.CompareTag("Player") || (hit.collider.transform.parent != null && hit.collider.transform.parent.CompareTag("Player"))) {
+                animate.Chase();
+                if (!dying) controller.SimpleMove(enemyStats.stats[StatNames.Speed] * transform.forward);
+            }
         }
         else if (!animate.anim.GetBool("isDying")) {
             animate.Reset();

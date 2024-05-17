@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class RoomBehavior : MonoBehaviour {
@@ -7,8 +8,15 @@ public class RoomBehavior : MonoBehaviour {
     public GameObject[] doors;
     public GameObject enemy;
     public GameObject player;
+    public NavMeshSurface navSurface;
+    public bool[] status = new bool[4];
+
+    public void getSurface() {
+        navSurface = transform.GetComponentInChildren<NavMeshSurface>();
+    }
 
     public void UpdateRoom(bool[] status) {
+        this.status = status;
         for (int i = 0; i < status.Length; i ++) {
             doors[i].SetActive(status[i]);
             walls[i].SetActive(!status[i]);

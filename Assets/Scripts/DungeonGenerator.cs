@@ -16,6 +16,10 @@ public class DungeonGenerator : MonoBehaviour {
     public Vector2 offset;
     List<Room> floor;
     public GameObject player;
+
+    readonly List<BoxCollider> floors = new();
+    readonly List<RoomBehavior> behaviors = new();
+    public GenerateNavLinks generateNavLinks;
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         MazeGenerator();
@@ -112,22 +116,32 @@ public class DungeonGenerator : MonoBehaviour {
             for(int j = 0; j < size.y; j ++) {
                 Room currentRoom = floor[Mathf.FloorToInt(i + j * size.x)];
                 if (currentRoom.visited) {
+                    RoomBehavior newRoom;
                     if (i == size.x - 1 && j == size.y - 1) {
-                        var newRoom = Instantiate(endRoom, new Vector3(i * offset.x, 2.5f, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
+                        newRoom = Instantiate(endRoom, new Vector3(i * offset.x, 2.5f, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
                         newRoom.UpdateRoom(currentRoom.status);
                         newRoom.GetComponent<RoomBehavior>().player = player;
-                        newRoom.name += " " + i + " - " + j;
+                        newRoom.name += + i + "-" + j;
                         newRoom.SpawnEnemies(true);
-                    } 
+                    }
                     else {
-                        var newRoom = Instantiate(room, new Vector3(i * offset.x, 2.5f, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
+                        newRoom = Instantiate(room, new Vector3(i * offset.x, 2.5f, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehavior>();
                         newRoom.UpdateRoom(currentRoom.status);
                         newRoom.GetComponent<RoomBehavior>().player = player;
-                        newRoom.name += " " + i + " - " + j;
+                        newRoom.name += + i + "-" + j;
                         if (i != 0 || j != 0) newRoom.SpawnEnemies(false);
                     }
+
+                    floors.Add(newRoom.transform.GetChild(0).GetChild(0).GetComponent<BoxCollider>());
+                    behaviors.Add(newRoom);
                 }
             }
+        }
+        generateNavLinks.floors = floors;
+        generateNavLinks.DoGenerateLinks();
+        foreach (RoomBehavior rb in behaviors) {
+            rb.getSurface();
+            rb.navSurface.BuildNavMesh();
         }
     }
 }

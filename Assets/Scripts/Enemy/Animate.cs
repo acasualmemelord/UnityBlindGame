@@ -29,9 +29,4 @@ public class Animate : MonoBehaviour {
         anim.SetBool("isDying", false);
         anim.SetBool("isDead", false);
     }
-
-    // Update is called once per frame
-    void Update() {
-        
-    }
 }
