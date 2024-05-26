@@ -1,23 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
-    public GameObject pauseMenu;
-
-    private void Start() {
-        pauseMenu.SetActive(false);
-    }
-
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if(!pauseMenu.activeSelf) {
-                pauseMenu.SetActive(true);
-                Time.timeScale = 0;
-            } else {
-                pauseMenu.SetActive(false);
-                Time.timeScale = 1;
-            }
-        }
-    }
     public static void LoadMainMenu() {
         SceneManager.LoadScene("MainMenu");
     }
