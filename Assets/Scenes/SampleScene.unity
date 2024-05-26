@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 73152973}
   - component: {fileID: 73152972}
   - component: {fileID: 73152971}
-  - component: {fileID: 73152970}
+  - component: {fileID: 73152974}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -220,21 +220,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &73152970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73152968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21670a81805644cdfad8f5ee9144e8e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playButton: {fileID: 1819238967}
-  settingsButton: {fileID: 1055896882}
-  exitButton: {fileID: 73152971}
 --- !u!114 &73152971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +264,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73152970}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -329,6 +314,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73152968}
   m_CullTransparentMesh: 1
+--- !u!114 &73152974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73152968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3beb1966c064f448ed2a1ad63007da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumeButton: {fileID: 1819238967}
+  settingsButton: {fileID: 1055896882}
+  restartButton: {fileID: 73152971}
+  exitButton: {fileID: 705696027}
+  pauseMenu: {fileID: 1119194393}
 --- !u!1 &81199159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,7 +1185,7 @@ GameObject:
   - component: {fileID: 705696030}
   - component: {fileID: 705696029}
   - component: {fileID: 705696027}
-  - component: {fileID: 705696028}
+  - component: {fileID: 705696032}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1235,7 +1237,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 705696028}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -1247,21 +1249,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &705696028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705696026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21670a81805644cdfad8f5ee9144e8e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playButton: {fileID: 1819238967}
-  settingsButton: {fileID: 1055896882}
-  exitButton: {fileID: 705696027}
 --- !u!114 &705696029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,6 +1307,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &705696032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705696026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3beb1966c064f448ed2a1ad63007da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumeButton: {fileID: 1819238967}
+  settingsButton: {fileID: 1055896882}
+  restartButton: {fileID: 73152971}
+  exitButton: {fileID: 705696027}
+  pauseMenu: {fileID: 1119194393}
 --- !u!1 &836023332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,7 +2352,7 @@ GameObject:
   - component: {fileID: 1055896884}
   - component: {fileID: 1055896883}
   - component: {fileID: 1055896882}
-  - component: {fileID: 1055896881}
+  - component: {fileID: 1055896885}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -2376,21 +2380,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1055896881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055896879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21670a81805644cdfad8f5ee9144e8e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playButton: {fileID: 1819238967}
-  settingsButton: {fileID: 1055896882}
-  exitButton: {fileID: 705696027}
 --- !u!114 &1055896882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2435,7 +2424,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1055896881}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OpenSettings
         m_Mode: 1
@@ -2485,6 +2474,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055896879}
   m_CullTransparentMesh: 1
+--- !u!114 &1055896885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055896879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3beb1966c064f448ed2a1ad63007da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumeButton: {fileID: 1819238967}
+  settingsButton: {fileID: 1055896882}
+  restartButton: {fileID: 73152971}
+  exitButton: {fileID: 705696027}
+  pauseMenu: {fileID: 1119194393}
 --- !u!1 &1100123944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3630,9 +3636,9 @@ GameObject:
   - component: {fileID: 1819238970}
   - component: {fileID: 1819238969}
   - component: {fileID: 1819238967}
-  - component: {fileID: 1819238968}
+  - component: {fileID: 1819238972}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3682,7 +3688,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1819238968}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
@@ -3694,21 +3700,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1819238968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819238966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21670a81805644cdfad8f5ee9144e8e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playButton: {fileID: 1819238967}
-  settingsButton: {fileID: 1055896882}
-  exitButton: {fileID: 705696027}
 --- !u!114 &1819238969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3767,6 +3758,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1819238972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819238966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3beb1966c064f448ed2a1ad63007da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumeButton: {fileID: 1819238967}
+  settingsButton: {fileID: 1055896882}
+  restartButton: {fileID: 73152971}
+  exitButton: {fileID: 705696027}
+  pauseMenu: {fileID: 1119194393}
 --- !u!1 &1826490005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3797,10 +3805,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 73152969}
   - {fileID: 1819238971}
-  - {fileID: 705696031}
   - {fileID: 1055896880}
+  - {fileID: 73152969}
+  - {fileID: 705696031}
   m_Father: {fileID: 836023333}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

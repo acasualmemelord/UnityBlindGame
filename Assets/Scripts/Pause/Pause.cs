@@ -13,18 +13,18 @@ public class Pause : MonoBehaviour {
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (!pauseMenu.activeSelf) {
-                pauseMenu.SetActive(true);
-                Time.timeScale = 0;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else {
-                pauseMenu.SetActive(false);
-                Time.timeScale = 1;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+        }
+        if (pauseMenu.activeSelf) {
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }
