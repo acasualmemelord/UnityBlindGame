@@ -30,6 +30,7 @@ public class EnemySystem : MonoBehaviour {
     void Update() {
         if (hp <= 0 && !dying) {
             dying = true;
+            gameObject.tag = "Invisible";
             animate.Die();
             playerStats.GainMana(10);
         }

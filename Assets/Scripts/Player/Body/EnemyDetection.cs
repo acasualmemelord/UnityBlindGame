@@ -15,6 +15,7 @@ public class EnemyDetection : MonoBehaviour {
 
     private void OnTriggerEnter(Collider c) {
         if (c.CompareTag("Enemy")) {
+            Debug.Log(c + " entered");
             var enemy = c.transform;
             if (enemy.childCount == 1) enemy = enemy.parent;
             else enemy = enemy.GetChild(0);
@@ -26,6 +27,7 @@ public class EnemyDetection : MonoBehaviour {
 
     private void OnTriggerExit(Collider c) {
         if (c.CompareTag("Enemy")) {
+            Debug.Log(c + " exited");
             var enemy = c.transform;
             if (enemy.childCount == 1) enemy = enemy.parent;
             else enemy = enemy.GetChild(0);

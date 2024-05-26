@@ -22,10 +22,9 @@ public class Move : MonoBehaviour {
     void Update() {
         if(!foundTarget) target = homing.homingStatus;
         if (target && target.CompareTag("Enemy")) {
-            //Debug.Log(target + " " + target.tag);
             foundTarget = true;
             Vector3 distance = (target.transform.GetChild(0).position - transform.position);
-            multiplier = 1.5f;
+            multiplier = 1.3f;
             rb.AddForce(speed * multiplier * ((transform.forward + distance) / 2));
         }
         else {
