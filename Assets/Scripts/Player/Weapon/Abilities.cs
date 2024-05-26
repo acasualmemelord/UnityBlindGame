@@ -39,26 +39,14 @@ public class Abilities : MonoBehaviour {
     public Material Reflection;
 
     public GameObject pauseMenu;
-
-<<<<<<< Updated upstream
-    void Start()
-    {
-=======
     void Start() {
->>>>>>> Stashed changes
         meditateCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
         forcefieldCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
         ricochetCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
 
         playerMovement = userCamera.transform.parent.GetComponentInChildren<PlayerMovement>();
     }
-
-<<<<<<< Updated upstream
-    void Update()
-    {
-=======
     void Update() {
->>>>>>> Stashed changes
         if (pauseMenu.activeSelf) return;
         if (unblind) SetMaterial(Reflection);
         else SetMaterial(noReflection);
