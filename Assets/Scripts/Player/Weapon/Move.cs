@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour {
     public PlayerStats playerStats;
-    public float speed = 100f;
+    public float speed = 50f;
     public float multiplier = 1f;
     public Rigidbody rb;
     public Hit hit;
@@ -16,6 +16,7 @@ public class Move : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         hit = this.transform.GetChild(0).GetChild(0).GetComponent<Hit>();
         homing = this.transform.GetChild(0).GetChild(1).GetComponent<Homing>();
+        StartCoroutine(Despawner());
     }
 
     void Update() {
@@ -23,7 +24,7 @@ public class Move : MonoBehaviour {
         if (target && target.CompareTag("Enemy")) {
             foundTarget = true;
             Vector3 distance = (target.transform.GetChild(0).position - transform.position);
-            multiplier = 1.5f;
+            multiplier = 1.25f;
             rb.AddForce(speed * multiplier * ((transform.forward + distance) / 2));
         }
         else {
@@ -40,9 +41,15 @@ public class Move : MonoBehaviour {
                 else system = enemy.GetComponentInChildren<EnemySystem>();
                 EnemyStats enemyStats = system.thisStats;
                 enemyStats.Damage(system.hp, playerStats.stats[StatNames.Magic] - enemyStats.stats[StatNames.Resilience], out system.hp);
+                system.hostile = true;
                 //Debug.Log(system.hp + " " + playerStats.stats[StatNames.Magic] + " " + enemyStats.stats[StatNames.Resilience]);
             }
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator Despawner() {
+        yield return new WaitForSeconds(10);
+        if (gameObject) Destroy(gameObject);
     }
 }

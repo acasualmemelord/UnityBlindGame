@@ -18,6 +18,7 @@ public class EnemySystem : MonoBehaviour {
     public Animate animate;
     public float hp;
     public bool dying = false;
+    public bool hostile = false;
     
     private void Start() {
         playerDetection = transform.GetComponentInChildren<PlayerDetection>();
@@ -32,8 +33,8 @@ public class EnemySystem : MonoBehaviour {
             animate.Die();
             playerStats.GainMana(10);
         }
-        
-        if (playerDetection.found) {
+        hostile = playerDetection.found;
+        if (hostile) {
             Vector3 newtarget = player.transform.position;
             newtarget.y = transform.position.y;
             transform.LookAt(newtarget);
