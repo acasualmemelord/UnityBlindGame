@@ -430,7 +430,11 @@ RectTransform:
   - {fileID: 1876319086}
   - {fileID: 1599776185}
   - {fileID: 70787229}
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
   - {fileID: 1119194396}
+=======
+  - {fileID: 1805987446}
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2652,7 +2656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8179ccc42f7f0495584882defffbe4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
   pauseMenu: {fileID: 1119194393}
+=======
+  pauseMenu: {fileID: 1805987445}
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
 --- !u!4 &1151745108
 Transform:
   m_ObjectHideFlags: 0
@@ -3373,6 +3381,7 @@ MonoBehaviour:
   projectile: {fileID: 8125436370720696565, guid: 66924ae80aafef646a5a06bcbfc8996c, type: 3}
   point: {fileID: 107769144}
   userCamera: {fileID: 963194225}
+  pauseMenu: {fileID: 1805987445}
   audioSource: {fileID: 1772168439}
   pauseMenu: {fileID: 1119194393}
 --- !u!82 &1772168439
@@ -3471,7 +3480,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
 --- !u!1 &1796440302
+=======
+--- !u!1 &1805987445
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3479,22 +3492,35 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
   - component: {fileID: 1796440303}
   - component: {fileID: 1796440305}
   - component: {fileID: 1796440304}
   m_Layer: 5
   m_Name: Text (TMP)
+=======
+  - component: {fileID: 1805987446}
+  - component: {fileID: 1805987448}
+  - component: {fileID: 1805987447}
+  m_Layer: 5
+  m_Name: PauseMenu
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
 --- !u!224 &1796440303
+=======
+--- !u!224 &1805987446
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
   m_GameObject: {fileID: 1796440302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -3789,18 +3815,32 @@ RectTransform:
   - {fileID: 705696031}
   - {fileID: 1055896880}
   m_Father: {fileID: 836023333}
+=======
+  m_GameObject: {fileID: 1805987445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 81199163}
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
 --- !u!114 &1826490007
+=======
+--- !u!114 &1805987447
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
   m_GameObject: {fileID: 1826490005}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3809,10 +3849,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &1826490008
 MonoBehaviour:
+=======
+  m_GameObject: {fileID: 1805987445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: c6b4452c25cf44042a149eca65d0a42f, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1805987448
+CanvasRenderer:
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
   m_GameObject: {fileID: 1826490005}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3820,6 +3886,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+=======
+  m_GameObject: {fileID: 1805987445}
+  m_CullTransparentMesh: 1
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
 --- !u!1 &1870259996
 GameObject:
   m_ObjectHideFlags: 0
@@ -4030,7 +4100,11 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   noReflection: {fileID: 2100000, guid: 954367a070c4b8041be3d70dbf33d0c9, type: 2}
   Reflection: {fileID: 2100000, guid: 8bd0922734f744c4f94611eeb635ed46, type: 2}
+<<<<<<< Updated upstream:Assets/Scenes/SampleScene.unity
   pauseMenu: {fileID: 1119194393}
+=======
+  pauseMenu: {fileID: 1805987445}
+>>>>>>> Stashed changes:Assets/Scenes/Game.unity
 --- !u!82 &1940508843
 AudioSource:
   m_ObjectHideFlags: 0
