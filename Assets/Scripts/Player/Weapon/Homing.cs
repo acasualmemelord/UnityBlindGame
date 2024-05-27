@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Homing : MonoBehaviour {
     public Collider homingStatus;
-    public GameObject homingSphere;
+    public SphereCollider sphere;
     public PlayerStats stats;
 
     private void Start() {
-        float size = stats.homingRadius;
-        homingSphere.transform.localScale = new Vector3(size, size, size);
+        sphere.radius = stats.homingRadius;
     }
 
     private void OnTriggerEnter(Collider c) {

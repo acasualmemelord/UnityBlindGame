@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   homingStatus: {fileID: 0}
-  homingSphere: {fileID: 7505280798122027204}
+  sphere: {fileID: 1090694474617429775}
   stats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
 --- !u!1 &7592491236739419481
 GameObject:
@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
-  speed: 5
+  speed: 12
   multiplier: 1
   rb: {fileID: 8854946567050183594}
   hit: {fileID: 0}
