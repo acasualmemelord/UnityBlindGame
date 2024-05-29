@@ -38,34 +38,33 @@ public class Abilities : MonoBehaviour {
     public Material noReflection;
     public Material Reflection;
 
-    public GameObject pauseMenu;
     void Start() {
         meditateCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
         forcefieldCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
         ricochetCooldown.transform.localScale = new Vector3(0, 0.5f, 0.5f);
 
+        userCamera = GameObject.Find("First Person Player").transform.GetChild(0).gameObject;
+
         playerMovement = userCamera.transform.parent.GetComponentInChildren<PlayerMovement>();
     }
     void Update() {
-        if (pauseMenu.activeSelf) return;
+        GameObject pauseMenu = GameObject.Find("PauseMenu");
+        if (pauseMenu != null) return;
         if (unblind) SetMaterial(Reflection);
         else SetMaterial(noReflection);
         if (Mathf.Approximately(meditateCooldown.transform.localScale.x, 0)) meditateCharged = true; else meditateCharged = false;
         if (Mathf.Approximately(forcefieldCooldown.transform.localScale.x, 0)) forcefieldCharged = true; else forcefieldCharged = false;
         if (Mathf.Approximately(ricochetCooldown.transform.localScale.x, 0)) ricochetCharged = true; else ricochetCharged = false;
-        if (Input.GetButtonDown("Ability 1") && meditateCharged && playerStats.UseMana(meditateCost))
-        {
+        if (Input.GetButtonDown("Ability 1") && meditateCharged && playerStats.UseMana(meditateCost)) {
             meditateCharged = false;
             StartCoroutine(Meditate());
         }
-        if (Input.GetButtonDown("Ability 2") && forcefieldCharged && playerStats.UseMana(forcefieldCost))
-        {
+        if (Input.GetButtonDown("Ability 2") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
             forcefieldCharged = false;
             Debug.Log("e pressed");
             StartCoroutine(Forcefield());
         }
-        if (Input.GetButtonDown("Ability 3") && ricochetCharged && playerStats.UseMana(ricochetCost))
-        {
+        if (Input.GetButtonDown("Ability 3") && ricochetCharged && playerStats.UseMana(ricochetCost)) {
             ricochetCharged = false;
             StartCoroutine(Ricochet());
         }
@@ -81,9 +80,9 @@ public class Abilities : MonoBehaviour {
     private IEnumerator Meditate() {
         audioSource.Play();
         float speed = playerStats.stats[StatNames.Speed];
-        playerMovement.speed = 0;
+        playerMovement.Speed = 0;
         yield return new WaitForSeconds(2);
-        playerMovement.speed = (int)speed;
+        playerMovement.Speed = (int)speed;
         unblind = true;
         meditateCharged = false;
         yield return new WaitForSeconds(meditateTime);

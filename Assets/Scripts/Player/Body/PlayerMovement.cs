@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     bool isGrounded;
     bool isSprinting;
 
-    public int speed { get; internal set; }
+    public int Speed { get; internal set; }
 
     // Update is called once per frame
     void Update() {
@@ -38,12 +38,22 @@ public class PlayerMovement : MonoBehaviour {
         if (move != Vector3.zero) audioSource.Play();
         controller.Move(multiplier * playerStats.stats[StatNames.Speed] * Time.deltaTime * move);
 
-        if(Input.GetButtonDown("Jump") && isGrounded) {
+        if (Input.GetButtonDown("Jump") && isGrounded) {
             velocity.y = Mathf.Sqrt(playerStats.stats[StatNames.JumpHeight] * -2f * gravity);
+        }
+
+        if (Input.GetButtonDown("Dash") && playerStats.UseStamina(20)) {
+            StartCoroutine(Dash());
         }
 
         //gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private IEnumerator Dash() {
+        multiplier = 2f;
+        yield return new WaitForSeconds(1);
+        multiplier = 1f;
     }
 }

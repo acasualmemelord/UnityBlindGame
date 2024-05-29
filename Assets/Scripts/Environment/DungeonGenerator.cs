@@ -21,6 +21,7 @@ public class DungeonGenerator : MonoBehaviour {
     readonly List<RoomBehavior> behaviors = new();
     public GenerateNavLinks generateNavLinks;
     void Start() {
+        player = GameObject.Find("First Person Player");
         MazeGenerator();
     }
 

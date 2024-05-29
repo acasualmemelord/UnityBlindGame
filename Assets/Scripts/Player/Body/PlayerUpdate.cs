@@ -13,6 +13,11 @@ public class PlayerUpdate : MonoBehaviour {
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+        healthBar = GameObject.Find("HealthBar").transform;
+        manaBar = GameObject.Find("ManaBar").transform;
+        staminaBar = GameObject.Find("StaminaBar").transform;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         playerStats.stats[StatNames.Health] = playerStats.stats[StatNames.MaxHealth];
         playerStats.stats[StatNames.Mana] = playerStats.stats[StatNames.MaxMana];
         playerStats.stats[StatNames.Stamina] = playerStats.stats[StatNames.MaxStamina];
