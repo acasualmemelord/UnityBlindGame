@@ -5,22 +5,20 @@ using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour {
     public EnemyStats enemyStats;
-    public SphereCollider sphere;
     public bool found = false;
+    private float radius;
+    public LayerMask playerMask;
+    private Collider[] colliders = new Collider[1];
 
     private void Start() {
-        float scale = enemyStats.stats[StatNames.SightRadius];
-        sphere.radius = scale;
+        radius = enemyStats.stats[StatNames.SightRadius];
     }
-
-    private void OnTriggerEnter(Collider c) {
-        if (c.CompareTag("Player")) {
+    
+    private void Update() {
+        colliders = new Collider[1];
+        if(Physics.OverlapSphereNonAlloc(transform.position, radius, colliders, playerMask) > 0) {
             found = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider c) {
-        if (c.CompareTag("Player")) {
+        } else {
             found = false;
         }
     }
