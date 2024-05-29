@@ -19,7 +19,7 @@ MonoBehaviour:
     - Key: 1
       Value: 100
     - Key: 2
-      Value: 1
+      Value: 0.5
     - Key: 3
       Value: 10
     - Key: 4
@@ -29,7 +29,7 @@ MonoBehaviour:
     - Key: 6
       Value: 10
     - Key: 7
-      Value: 70.42888
+      Value: 100
     - Key: 8
       Value: 100
     - Key: 9
@@ -60,7 +60,7 @@ MonoBehaviour:
   attackManaCost: 1
   hpCooldown: 0
   maxHPCooldown: 500
-  manaCooldown: 380.75293
+  manaCooldown: 0
   maxManaCooldown: 500
   staminaCooldown: 0
   maxStaminaCooldown: 250
