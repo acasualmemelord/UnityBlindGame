@@ -15,7 +15,7 @@ public class PlayerStats : ScriptableObject {
     public bool isSprinting = false;
 
     //mage stats
-    public float homingRadius = 40;
+    public float homingRadius = 2.5f;
     public float attackManaCost = 1;
 
     public float hpCooldown = 0;
