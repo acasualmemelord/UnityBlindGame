@@ -21,16 +21,20 @@ public class Move : MonoBehaviour {
 
     void Update() {
         if(!foundTarget) target = homing.homingStatus;
-        if (target && target.CompareTag("Enemy")) {
+        if (target && target.CompareTag("Enemy"))
+        {
             foundTarget = true;
-            Vector3 distance = (target.transform.GetChild(0).position - transform.position);
-            multiplier = 1.3f;
-            rb.AddForce(speed * multiplier * ((transform.forward + distance) / 2));
+            multiplier = 2f;
+            Vector3 distance = Vector3.Normalize(target.transform.GetChild(0).position - transform.position) * multiplier;
+            
+            rb.AddForce((transform.forward + distance) / 2 * (speed * multiplier));
+            Debug.Log("homing: " + (transform.forward + distance) / 2 * (speed * multiplier));
         }
-        else {
+        else
+        {
             foundTarget = false;
             multiplier = 1;
-            rb.AddForce(speed * multiplier * transform.forward);
+            rb.AddForce(transform.forward * (speed * multiplier));
         }
         Collider collider = hit.colliderStatus;
         if (collider && !collider.CompareTag("Invisible") && !collider.CompareTag("Player")) {
@@ -49,7 +53,7 @@ public class Move : MonoBehaviour {
     }
 
     private IEnumerator Despawner() {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(2);
         if (gameObject) Destroy(gameObject);
     }
 }
