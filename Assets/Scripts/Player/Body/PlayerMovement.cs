@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     public AudioSource audioSource;
     public float multiplier = 1f;
     public float gravity = -9.81f;
+    public float speed;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -18,6 +19,10 @@ public class PlayerMovement : MonoBehaviour {
     bool isSprinting;
 
     public int Speed { get; internal set; }
+
+    private void Start() {
+        speed = playerStats.stats[StatNames.Speed];
+    }
 
     // Update is called once per frame
     void Update() {
@@ -36,7 +41,7 @@ public class PlayerMovement : MonoBehaviour {
         else multiplier = 1f;
         Vector3 move = transform.right * x + transform.forward * z;
         if (move != Vector3.zero) audioSource.Play();
-        controller.Move(multiplier * playerStats.stats[StatNames.Speed] * Time.deltaTime * move);
+        controller.Move(multiplier * speed * Time.deltaTime * move);
 
         if (Input.GetButtonDown("Jump") && isGrounded) {
             velocity.y = Mathf.Sqrt(playerStats.stats[StatNames.JumpHeight] * -2f * gravity);
@@ -52,8 +57,15 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private IEnumerator Dash() {
-        multiplier = 2f;
-        yield return new WaitForSeconds(1);
-        multiplier = 1f;
+        if(speed < playerStats.stats[StatNames.Speed] * 10) speed = playerStats.stats[StatNames.Speed] * 10;
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(ReturnToNormal());
+    }
+    private IEnumerator ReturnToNormal() {
+        while (speed > playerStats.stats[StatNames.Speed]) {
+            yield return null;
+            speed *= 0.8f;
+        }
+        speed = playerStats.stats[StatNames.Speed] ;
     }
 }
