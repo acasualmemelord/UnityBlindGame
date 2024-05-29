@@ -59,6 +59,11 @@ public class Abilities : MonoBehaviour {
             meditateCharged = false;
             StartCoroutine(Meditate());
         }
+        if (Input.GetButtonDown("DMed") && meditateCharged && playerStats.UseMana(meditateCost))
+        {
+            meditateCharged = false;
+            StartCoroutine(DebugMeditate());
+        }
         if (Input.GetButtonDown("Ability 2") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
             forcefieldCharged = false;
             Debug.Log("e pressed");
@@ -67,6 +72,7 @@ public class Abilities : MonoBehaviour {
         if (Input.GetButtonDown("Ability 3") && ricochetCharged && playerStats.UseMana(ricochetCost)) {
             ricochetCharged = false;
             StartCoroutine(Ricochet());
+
         }
     }
     void SetMaterial(Material material) {
@@ -86,6 +92,21 @@ public class Abilities : MonoBehaviour {
         unblind = true;
         meditateCharged = false;
         yield return new WaitForSeconds(meditateTime);
+        meditateCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        unblind = false;
+        StartCoroutine(ScaleOverTime(meditateCooldown, meditateCooldownTime));
+        meditateCharged = true;
+    }
+    private IEnumerator DebugMeditate()
+    {
+        audioSource.Play();
+        float speed = playerStats.stats[StatNames.Speed];
+        playerMovement.Speed = 0;
+        yield return new WaitForSeconds(2);
+        playerMovement.Speed = (int)speed;
+        unblind = true;
+        meditateCharged = false;
+        yield return new WaitForSeconds(999999999);
         meditateCooldown.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         unblind = false;
         StartCoroutine(ScaleOverTime(meditateCooldown, meditateCooldownTime));
