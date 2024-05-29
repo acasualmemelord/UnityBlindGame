@@ -29,7 +29,7 @@ MonoBehaviour:
     - Key: 6
       Value: 10
     - Key: 7
-      Value: 100
+      Value: 70.42888
     - Key: 8
       Value: 100
     - Key: 9
@@ -56,11 +56,11 @@ MonoBehaviour:
   xp: 0
   level: 1
   isSprinting: 0
-  homingRadius: 40
+  homingRadius: 2.5
   attackManaCost: 1
   hpCooldown: 0
   maxHPCooldown: 500
-  manaCooldown: 0
+  manaCooldown: 380.75293
   maxManaCooldown: 500
   staminaCooldown: 0
   maxStaminaCooldown: 250
