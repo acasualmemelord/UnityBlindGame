@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour {
     public LayerMask groundMask;
 
     Vector3 velocity;
+    public Vector3 position;
+    bool savePosition = true;
     bool isGrounded;
     bool isSprinting;
 
@@ -22,14 +24,23 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Start() {
         speed = playerStats.stats[StatNames.Speed];
+        position = transform.position;
     }
 
     // Update is called once per frame
     void Update() {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+        if(savePosition) StartCoroutine(SavePosition());
+
         if (isGrounded && velocity.y < 0) {
             velocity.y = -2f;
+        }
+
+        if (transform.position.y < -10) {
+            controller.enabled = false;
+            controller.transform.position = position;
+            controller.enabled = true;
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -56,11 +67,19 @@ public class PlayerMovement : MonoBehaviour {
         controller.Move(velocity * Time.deltaTime);
     }
 
+    private IEnumerator SavePosition() {
+        savePosition = false;
+        if (transform.position.y >= 4.4) position = transform.position;
+        yield return new WaitForSeconds(5);
+        savePosition = true;
+    }
+
     private IEnumerator Dash() {
         if(speed < playerStats.stats[StatNames.Speed] * 10) speed = playerStats.stats[StatNames.Speed] * 10;
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(ReturnToNormal());
     }
+
     private IEnumerator ReturnToNormal() {
         while (speed > playerStats.stats[StatNames.Speed]) {
             yield return null;
