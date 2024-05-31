@@ -6,7 +6,7 @@ using UnityEngine.AI; //important
 public class RandomMovement : MonoBehaviour {
     public NavMeshAgent agent;
     public float range = 10f; //radius of sphere
-    public Animator animate;
+    public Animate animate;
     public float timeLimit = 1500f;
     public float maxTimeLimit = 1500f;
 
@@ -15,25 +15,26 @@ public class RandomMovement : MonoBehaviour {
 
     void Start() {
         agent = GetComponent<NavMeshAgent>();
+        animate = transform.GetComponent<Animate>();
         centrePoint = agent.transform;
     }
 
     void Update() {
-        if (!animate.GetBool("isChasing")) {
+        if (animate.GetStatus() != 2) {
             if (agent.remainingDistance <= agent.stoppingDistance || timeLimit == 0) {
                 if (RandomPoint(centrePoint.position, range, out Vector3 point)) {
                     Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                    animate.SetBool("isPatrolling", true);
+                    animate.Patrol();
 
                     agent.SetDestination(point);
                     timeLimit = maxTimeLimit;
                 }
             }
         }
-        else {
+        else if(animate.GetStatus() != 4) {
             agent.isStopped = true;
             agent.ResetPath();
-            animate.SetBool("isPatrolling", false);
+            //animate.Reset();
         }
 
         if(timeLimit > 0) {

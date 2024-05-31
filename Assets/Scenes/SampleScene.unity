@@ -1278,6 +1278,11 @@ MonoBehaviour:
   restartButton: {fileID: 73152971}
   exitButton: {fileID: 705696027}
   pauseMenu: {fileID: 1119194393}
+--- !u!1 &823806893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3993194728189340962, guid: 6bfb8a6a267ff6146bf948fb143eaf83, type: 3}
+  m_PrefabInstance: {fileID: 501150278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &836023332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,6 +1521,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880034273}
   m_CullTransparentMesh: 1
+--- !u!1 &914950659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4577583364618696513, guid: 6bfb8a6a267ff6146bf948fb143eaf83, type: 3}
+  m_PrefabInstance: {fileID: 501150278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &945374126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,6 +2310,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1324186998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3870945336269969935, guid: 6bfb8a6a267ff6146bf948fb143eaf83, type: 3}
+  m_PrefabInstance: {fileID: 501150278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1411597585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,6 +2832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8179ccc42f7f0495584882defffbe4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1850683118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 780404004130135058, guid: 6bfb8a6a267ff6146bf948fb143eaf83, type: 3}
+  m_PrefabInstance: {fileID: 501150278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1876319085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2982,16 +3002,16 @@ MonoBehaviour:
   forcefieldTime: 4
   forcefieldCooldownTime: 4
   forcefield: {fileID: 6922438529585482604, guid: 1dd273ab264c4654d9bc46033416bce4, type: 3}
-  forcefieldPoint: {fileID: 0}
-  userCamera: {fileID: 0}
+  forcefieldPoint: {fileID: 1324186998}
+  userCamera: {fileID: 1850683118}
   ricochetCooldown: {fileID: 1599776184}
   ricochetCost: 10
   ricochetTime: 5
   ricochetCooldownTime: 4
   ricochet: {fileID: 8125436370720696565, guid: 01a0402646c92aa4f8e38ab5fb1bf809, type: 3}
   original: {fileID: 8125436370720696565, guid: 66924ae80aafef646a5a06bcbfc8996c, type: 3}
-  staff: {fileID: 0}
-  ricochetPoint: {fileID: 0}
+  staff: {fileID: 823806893}
+  ricochetPoint: {fileID: 914950659}
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
   playerMovement: {fileID: 0}
   noReflection: {fileID: 2100000, guid: 954367a070c4b8041be3d70dbf33d0c9, type: 2}

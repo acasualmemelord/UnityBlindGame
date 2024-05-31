@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class Animate : MonoBehaviour {
     public Animator anim;
-    // Start is called before the first frame update
+    int prevStatus = 0;
+    // 0: idle; 1: patrolling; 2: chasing; 3: attacking; 4: dying; 5: dead
     void Start() {
         anim = gameObject.GetComponent<Animator>();
-        Reset();
+    }
+
+    public void SaveStatus() {
+        if(prevStatus != anim.GetInteger("status")) prevStatus = anim.GetInteger("status");
+    }
+
+    public void Patrol() {
+        SaveStatus();
+        anim.SetInteger("status", 1);
     }
 
     public void Chase() {
-        anim.SetBool("isChasing", true);
+        SaveStatus();
+        anim.SetInteger("status", 2);
     }
 
     public void Attack() {
-        anim.SetBool("isAttacking", true);
+        SaveStatus();
+        anim.SetInteger("status", 3);
     }
 
     public void Die() {
-        anim.SetBool("isDying", true);
-        //anim.SetBool("isDead", true);
+        SaveStatus();
+        anim.SetInteger("status", 4);
     }
 
     public void Reset() {
-        anim.SetBool("isAttacking", false);
-        anim.SetBool("isChasing", false);
-        anim.SetBool("isDying", false);
-        anim.SetBool("isDead", false);
+        anim.SetInteger("status", prevStatus);
+    }
+
+    public int GetStatus() {
+        return anim.GetInteger("status");
     }
 }

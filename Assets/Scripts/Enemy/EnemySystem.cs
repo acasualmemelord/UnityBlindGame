@@ -28,7 +28,7 @@ public class EnemySystem : MonoBehaviour {
     }
 
     void Update() {
-        if (hp <= 0 && !dying) {
+        if (hp <= 0 && animate.GetStatus() == 4) {
             dying = true;
             gameObject.tag = "Invisible";
             animate.Die();
@@ -36,18 +36,17 @@ public class EnemySystem : MonoBehaviour {
         }
         hostile = playerDetection.found;
         if (hostile) {
+            animate.Chase();
+            Debug.Log(transform.name + ": " + animate.anim.GetInteger("status"));
             Vector3 newtarget = player.transform.position;
             newtarget.y = transform.position.y;
             transform.LookAt(newtarget);
             _ = Physics.Raycast(eyeLine.transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit);
             if (hit.collider.CompareTag("Player") || (hit.collider.transform.parent != null && hit.collider.transform.parent.CompareTag("Player"))) {
-                animate.Chase();
                 if (!dying) controller.SimpleMove(enemyStats.stats[StatNames.Speed] * transform.forward);
             }
         }
-        else if (!animate.anim.GetBool("isDying")) {
-            animate.Reset();
-        }
+        else if (animate.GetStatus() != 4) animate.Reset();
     }
 
 #pragma warning disable IDE0051 // Remove unused private members

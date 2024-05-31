@@ -24,14 +24,13 @@ public class Move : MonoBehaviour {
         if (target && target.CompareTag("Enemy"))
         {
             foundTarget = true;
-            multiplier = 2f;
+            multiplier = 4f;
             Vector3 distance = Vector3.Normalize(target.transform.GetChild(0).position - transform.position) * multiplier;
             
             rb.AddForce((transform.forward + distance) / 2 * (speed * multiplier));
-            Debug.Log("homing: " + (transform.forward + distance) / 2 * (speed * multiplier));
+            //Debug.Log("homing: " + (transform.forward + distance) / 2 * (speed * multiplier));
         }
-        else
-        {
+        else {
             foundTarget = false;
             multiplier = 1;
             rb.AddForce(transform.forward * (speed * multiplier));
@@ -53,7 +52,7 @@ public class Move : MonoBehaviour {
     }
 
     private IEnumerator Despawner() {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         if (gameObject) Destroy(gameObject);
     }
 }

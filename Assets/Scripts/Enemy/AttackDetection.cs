@@ -29,7 +29,7 @@ public class AttackDetection : MonoBehaviour {
             }
         }
         else {
-            if (!animate.GetComponent<Animator>().GetBool("isDying")) animate.Reset();
+            animate.Reset();
             entered = false;
             canHit = false;
         }
