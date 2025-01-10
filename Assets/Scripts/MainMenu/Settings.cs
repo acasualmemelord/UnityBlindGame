@@ -2,8 +2,8 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Settings : MonoBehaviour
-{
+public class Settings : MonoBehaviour {
+    public GameObject player;
     public Slider brightnessSlider;
     public Slider musicSlider;
     public Slider soundFXSlider;
@@ -14,10 +14,11 @@ public class Settings : MonoBehaviour
     public SoundManager soundManager;
 
     private float originalBrightness;
-    private float originalMusicVolume;
-    private float originalSoundFXVolume;
+    private static float originalMusicVolume;
+    private static float originalSoundFXVolume;
 
     private void Start() {
+
         // Loads saved settings or set default values
         originalBrightness = PlayerPrefs.GetFloat("Brightness", 1f);
         originalMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
@@ -33,7 +34,6 @@ public class Settings : MonoBehaviour
         // Adds event listeners
         cancelButton.onClick.AddListener(CancelChanges);
         saveButton.onClick.AddListener(SaveChanges);
-        backButton.onClick.AddListener(BackToMainMenu);
         brightnessSlider.onValueChanged.AddListener(AdjustBrightness);
         musicSlider.onValueChanged.AddListener(AdjustMusicVolume);
         soundFXSlider.onValueChanged.AddListener(AdjustSoundFXVolume);
@@ -59,15 +59,17 @@ public class Settings : MonoBehaviour
 
     public void AdjustMusicVolume(float volume) {
         SoundManager.Instance.MusicVolume(volume);
+        PlayerPrefs.GetFloat("MusicVolume", volume);
     }
 
     public void AdjustSoundFXVolume(float volume) {
         SoundManager.Instance.SoundFXVolume(volume);
+        PlayerPrefs.SetFloat("SFXVolume", volume);
     }
 
-    public void BackToMainMenu() {
+    public void CloseSettings() {
         // Load the main menu scene
-        SceneManager.UnloadSceneAsync("Settings");
+        SceneManager.UnloadSceneAsync("SettingsScene");
     }
 
     public void CancelChanges() {

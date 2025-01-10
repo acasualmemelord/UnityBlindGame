@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -18,7 +19,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void OpenSettings() {
-        GameManager.LoadSettings();
+        SceneManager.LoadScene("SettingsScene", LoadSceneMode.Additive);
     }
 
     public void ExitGame() {

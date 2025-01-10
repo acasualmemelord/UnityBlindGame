@@ -55,7 +55,7 @@ public class EnemySystem : MonoBehaviour {
                 newtarget.y = transform.position.y;
                 transform.LookAt(newtarget);
                 bool lineOfSight = Physics.Raycast(eyeLine.transform.position, transform.forward, out RaycastHit hit, enemyStats.stats[StatNames.SightRadius], mask);
-                Debug.Log(transform.name + ": " + lineOfSight);
+                //Debug.Log(transform.name + ": " + lineOfSight);
                 if (hit.collider != null && (hit.collider.CompareTag("Player") || (hit.collider.transform.parent != null && hit.collider.transform.parent.CompareTag("Player")))) {
                     if (!dying) controller.SimpleMove(enemyStats.stats[StatNames.Speed] * transform.forward);
                 }

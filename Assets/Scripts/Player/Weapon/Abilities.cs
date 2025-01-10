@@ -2,15 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Abilities : MonoBehaviour {
     public GameObject RoomGenerator;
     public AudioSource audioSource;
 
+    public int currentAbility = 0;
+    private bool abilChanged = true;
+    public GameObject meditateIcon;
+    public GameObject forcefieldIcon;
+    public GameObject ricochetIcon;
+    public GameObject[] abils = { };
+
     public GameObject meditateCooldown;
     public int meditateCost = 20;
     public int meditateTime = 4;
     public int meditateCooldownTime = 8;
+    public int meditateUses = 0;
+    public int meditateMaxUses = 5;
     bool unblind = false;
     bool meditateCharged = true;
 
@@ -27,6 +37,8 @@ public class Abilities : MonoBehaviour {
     public int ricochetCost = 10;
     public int ricochetTime = 5;
     public int ricochetCooldownTime = 4;
+    public int ricochetUses = 0;
+    public int ricochetMaxUses = 5;
     public GameObject ricochet;
     public GameObject original;
     public GameObject staff;
@@ -46,6 +58,8 @@ public class Abilities : MonoBehaviour {
         userCamera = GameObject.Find("First Person Player").transform.GetChild(0).gameObject;
 
         playerMovement = userCamera.transform.parent.GetComponentInChildren<PlayerMovement>();
+
+        abils = new GameObject[] { meditateIcon, forcefieldIcon, ricochetIcon };
     }
     void Update() {
         GameObject pauseMenu = GameObject.Find("PauseMenu");
@@ -55,24 +69,61 @@ public class Abilities : MonoBehaviour {
         if (Mathf.Approximately(meditateCooldown.transform.localScale.x, 0)) meditateCharged = true; else meditateCharged = false;
         if (Mathf.Approximately(forcefieldCooldown.transform.localScale.x, 0)) forcefieldCharged = true; else forcefieldCharged = false;
         if (Mathf.Approximately(ricochetCooldown.transform.localScale.x, 0)) ricochetCharged = true; else ricochetCharged = false;
-        if (Input.GetButtonDown("Ability 1") && meditateCharged && playerStats.UseMana(meditateCost)) {
-            meditateCharged = false;
-            StartCoroutine(Meditate());
+        
+        if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+            abilChanged = true;
+            currentAbility++;
+            if (currentAbility > 2) {
+                currentAbility = 0;
+            }
+            Debug.Log(abils[currentAbility].name);
         }
-        if (Input.GetButtonDown("DMed") && meditateCharged && playerStats.UseMana(meditateCost))
-        {
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+            abilChanged = true;
+            currentAbility--;
+            if (currentAbility < 0) {
+                currentAbility = 2;
+            }
+            Debug.Log(abils[currentAbility].name);
+        }
+        if (abilChanged) {
+            abilChanged = false;
+            foreach (var abil in abils) {
+                if (abil != abils[currentAbility]) {
+                    RawImage image = abil.GetComponentInChildren<RawImage>();
+                    var temp = image.color;
+                    temp.a = 0.5f;
+                    image.color = temp;
+                } else {
+                    RawImage image = abil.GetComponentInChildren<RawImage>();
+                    var temp = image.color;
+                    temp.a = 1f;
+                    image.color = temp;
+                }
+            }
+        }
+
+        if (Input.GetButtonDown("DMed") && meditateCharged && playerStats.UseMana(meditateCost)) {
             meditateCharged = false;
             StartCoroutine(DebugMeditate());
         }
-        if (Input.GetButtonDown("Ability 2") && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
-            forcefieldCharged = false;
-            Debug.Log("e pressed");
-            StartCoroutine(Forcefield());
-        }
-        if (Input.GetButtonDown("Ability 3") && ricochetCharged && playerStats.UseMana(ricochetCost)) {
-            ricochetCharged = false;
-            StartCoroutine(Ricochet());
 
+        if (Input.GetButtonDown("Fire2")) {
+            if (currentAbility == 0 && meditateCharged && meditateUses <= meditateMaxUses && playerStats.UseMana(meditateCost)) {
+                meditateCharged = false;
+                meditateUses++;
+                StartCoroutine(Meditate());
+            }
+            if (currentAbility == 1 && forcefieldCharged && playerStats.UseMana(forcefieldCost)) {
+                forcefieldCharged = false;
+                StartCoroutine(Forcefield());
+            }
+            if (currentAbility == 2 && ricochetCharged && ricochetUses <= ricochetMaxUses && playerStats.UseMana(ricochetCost)) {
+                ricochetCharged = false;
+                ricochetUses++;
+                StartCoroutine(Ricochet());
+
+            }
         }
     }
     void SetMaterial(Material material) {

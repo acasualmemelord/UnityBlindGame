@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerUpdate : MonoBehaviour {
     public PlayerStats playerStats;
+    public TextMeshProUGUI health;
+    public TextMeshProUGUI mana;
+    public TextMeshProUGUI stamina;
     public Transform healthBar;
     public Transform manaBar;
     public Transform staminaBar;
@@ -27,6 +31,9 @@ public class PlayerUpdate : MonoBehaviour {
     }
 
     void Update() {
+        health.text = "" + Math.Floor(playerStats.stats[StatNames.Health]);
+        mana.text = "" + Math.Floor(playerStats.stats[StatNames.Mana]);
+        stamina.text = "" + Math.Floor(playerStats.stats[StatNames.Stamina]);
         healthBar.localScale = new Vector3(playerStats.stats[StatNames.Health] / playerStats.stats[StatNames.MaxHealth], 0.5f, 1f);
         manaBar.localScale = new Vector3(playerStats.stats[StatNames.Mana] / playerStats.stats[StatNames.MaxMana], 1f, 1f);
         staminaBar.localScale = new Vector3(playerStats.stats[StatNames.Stamina] / playerStats.stats[StatNames.MaxStamina], 1f, 1f);
