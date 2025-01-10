@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
@@ -16,12 +17,11 @@ public class Settings : MonoBehaviour
     private float originalMusicVolume;
     private float originalSoundFXVolume;
 
-    private void Start()
-    {
+    private void Start() {
         // Loads saved settings or set default values
         originalBrightness = PlayerPrefs.GetFloat("Brightness", 1f);
-        originalMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
-        originalSoundFXVolume = PlayerPrefs.GetFloat("SoundFXVolume", 1f);
+        originalMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        originalSoundFXVolume = PlayerPrefs.GetFloat("SoundFXVolume", 0.5f);
 
         // Sets initial slider values
         brightnessSlider.value = originalBrightness;
@@ -38,21 +38,18 @@ public class Settings : MonoBehaviour
         musicSlider.onValueChanged.AddListener(AdjustMusicVolume);
         soundFXSlider.onValueChanged.AddListener(AdjustSoundFXVolume);
 
-        if (soundManager == null)
-        {
+        if (soundManager == null) {
             soundManager = FindObjectOfType<SoundManager>();
         }
     }
 
-    public void ApplySettings()
-    {
+    public void ApplySettings() {
         AdjustBrightness(brightnessSlider.value);
         AdjustMusicVolume(musicSlider.value);
         AdjustSoundFXVolume(soundFXSlider.value);
     }
 
-    public void AdjustBrightness(float brightnessValue)
-    {
+    public void AdjustBrightness(float brightnessValue) {
         // Clamps the brightness value between 0 and 1
         brightnessValue = Mathf.Clamp01(brightnessValue);
 
@@ -60,24 +57,20 @@ public class Settings : MonoBehaviour
         RenderSettings.ambientLight = new Color(brightnessValue, brightnessValue, brightnessValue);
     }
 
-    public void AdjustMusicVolume(float volume)
-    {
+    public void AdjustMusicVolume(float volume) {
         SoundManager.Instance.MusicVolume(volume);
     }
 
-    public void AdjustSoundFXVolume(float volume)
-    {
+    public void AdjustSoundFXVolume(float volume) {
         SoundManager.Instance.SoundFXVolume(volume);
     }
 
-    public void BackToMainMenu()
-    {
+    public void BackToMainMenu() {
         // Load the main menu scene
-        GameManager.LoadMainMenu();
+        SceneManager.UnloadSceneAsync("Settings");
     }
 
-    public void CancelChanges()
-    {
+    public void CancelChanges() {
         // Reset slider values to the previously saved settings
         brightnessSlider.value = originalBrightness;
         musicSlider.value = originalMusicVolume;
@@ -87,8 +80,7 @@ public class Settings : MonoBehaviour
         ApplySettings();
     }
 
-    public void SaveChanges()
-    {
+    public void SaveChanges() {
         // Save the current slider values
         originalBrightness = brightnessSlider.value;
         originalMusicVolume = musicSlider.value;

@@ -97,8 +97,7 @@ public class Abilities : MonoBehaviour {
         StartCoroutine(ScaleOverTime(meditateCooldown, meditateCooldownTime));
         meditateCharged = true;
     }
-    private IEnumerator DebugMeditate()
-    {
+    private IEnumerator DebugMeditate() {
         audioSource.Play();
         float speed = playerStats.stats[StatNames.Speed];
         playerMovement.Speed = 0;

@@ -7,25 +7,21 @@ public class MainMenu : MonoBehaviour
     public Button settingsButton;
     public Button exitButton;
 
-    private void Start()
-    {
+    private void Start() {
         playButton.onClick.AddListener(PlayGame);
         settingsButton.onClick.AddListener(OpenSettings);
         exitButton.onClick.AddListener(ExitGame);
     }
 
-    public void PlayGame()
-    {
-        GameManager.LoadSampleScene();
+    public void PlayGame() {
+        GameManager.LoadTutorial();
     }
 
-    public void OpenSettings()
-    {
+    public void OpenSettings() {
         GameManager.LoadSettings();
     }
 
-    public void ExitGame()
-    {
+    public void ExitGame() {
         Application.Quit();
     }
 }

@@ -19,10 +19,9 @@ public class Move : MonoBehaviour {
         StartCoroutine(Despawner());
     }
 
-    void Update() {
+    void FixedUpdate() {
         if(!foundTarget) target = homing.homingStatus;
-        if (target && target.CompareTag("Enemy"))
-        {
+        if (target && target.CompareTag("Enemy")) {
             foundTarget = true;
             multiplier = 4f;
             Vector3 distance = Vector3.Normalize(target.transform.GetChild(0).position - transform.position) * multiplier;
@@ -38,10 +37,9 @@ public class Move : MonoBehaviour {
         Collider collider = hit.colliderStatus;
         if (collider && !collider.CompareTag("Invisible") && !collider.CompareTag("Player")) {
             if (collider.CompareTag("Enemy")) {
-                GameObject enemy = collider.gameObject;
                 EnemySystem system;
-                if(enemy.name == "Hitbox") system = enemy.GetComponentInParent<EnemySystem>();
-                else system = enemy.GetComponentInChildren<EnemySystem>();
+                if(collider.name == "Hitbox") system = collider.GetComponentInParent<EnemySystem>();
+                else system = collider.GetComponentInChildren<EnemySystem>();
                 EnemyStats enemyStats = system.thisStats;
                 enemyStats.Damage(system.hp, playerStats.stats[StatNames.Magic] - enemyStats.stats[StatNames.Resilience], out system.hp);
                 system.hostile = true;

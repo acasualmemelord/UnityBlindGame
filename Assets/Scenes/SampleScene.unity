@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -3018,8 +3018,8 @@ MonoBehaviour:
   ricochetPoint: {fileID: 914950659}
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
   playerMovement: {fileID: 0}
-  noReflection: {fileID: 2100000, guid: 954367a070c4b8041be3d70dbf33d0c9, type: 2}
-  Reflection: {fileID: 2100000, guid: 8bd0922734f744c4f94611eeb635ed46, type: 2}
+  noReflection: {fileID: 2100000, guid: 2e701f9d6b8aa304c93f2af59c1ee5d9, type: 2}
+  Reflection: {fileID: 2100000, guid: 75a90512024489d478e575ccfbd4c0b4, type: 2}
 --- !u!82 &1940508843
 AudioSource:
   m_ObjectHideFlags: 0
