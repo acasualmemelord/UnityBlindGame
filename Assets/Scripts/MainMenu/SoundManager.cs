@@ -12,8 +12,7 @@ public class SoundManager : MonoBehaviour {
         if (_instance == null) {
             _instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else {
+        } else {
             Destroy(gameObject);
             return;
         }
@@ -61,6 +60,15 @@ public class SoundManager : MonoBehaviour {
             musicAudioSource.clip = backgroundMusic;
             musicAudioSource.loop = true;
             musicAudioSource.Play();
+        }
+        else {
+            Debug.LogWarning("Background music clip or AudioSource is not assigned.");
+        }
+    }
+
+    public void StopBackgroundMusic() {
+        if (backgroundMusic != null && musicAudioSource != null) {
+            musicAudioSource.Stop();
         }
         else {
             Debug.LogWarning("Background music clip or AudioSource is not assigned.");

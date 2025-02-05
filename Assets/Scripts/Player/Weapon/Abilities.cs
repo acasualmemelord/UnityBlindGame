@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,12 @@ public class Abilities : MonoBehaviour {
 
     public int currentAbility = 0;
     private bool abilChanged = true;
-    public GameObject meditateIcon;
-    public GameObject forcefieldIcon;
-    public GameObject ricochetIcon;
+    public GameObject meditateParent;
+    public GameObject forcefieldParent;
+    public GameObject ricochetParent;
     public GameObject[] abils = { };
+    public int[] abilUses = { };
+    public int[] abilMaxUses = { };
 
     public GameObject meditateCooldown;
     public int meditateCost = 20;
@@ -28,6 +31,8 @@ public class Abilities : MonoBehaviour {
     public int forcefieldCost = 10;
     public int forcefieldTime = 4;
     public int forcefieldCooldownTime = 4;
+    public int forcefieldUses = 0;
+    public int forcefieldMaxUses = 5;
     public GameObject forcefield;
     public GameObject forcefieldPoint;
     public GameObject userCamera;
@@ -59,7 +64,8 @@ public class Abilities : MonoBehaviour {
 
         playerMovement = userCamera.transform.parent.GetComponentInChildren<PlayerMovement>();
 
-        abils = new GameObject[] { meditateIcon, forcefieldIcon, ricochetIcon };
+        abils = new GameObject[] { meditateParent, forcefieldParent, ricochetParent };
+        abilMaxUses = new int[] { meditateMaxUses, forcefieldMaxUses, ricochetMaxUses };
     }
     void Update() {
         GameObject pauseMenu = GameObject.Find("PauseMenu");
@@ -76,7 +82,6 @@ public class Abilities : MonoBehaviour {
             if (currentAbility > 2) {
                 currentAbility = 0;
             }
-            Debug.Log(abils[currentAbility].name);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
             abilChanged = true;
@@ -84,21 +89,24 @@ public class Abilities : MonoBehaviour {
             if (currentAbility < 0) {
                 currentAbility = 2;
             }
-            Debug.Log(abils[currentAbility].name);
         }
         if (abilChanged) {
             abilChanged = false;
-            foreach (var abil in abils) {
-                if (abil != abils[currentAbility]) {
-                    RawImage image = abil.GetComponentInChildren<RawImage>();
+            abilUses = new int[] { meditateUses, forcefieldUses, ricochetUses };
+            for (int i = 0; i < abils.Length; i++) {
+                abils[i].transform.Find("Uses").GetComponentInChildren<TextMeshProUGUI>().text = "" + (abilMaxUses[i] - abilUses[i]);
+                if (i != currentAbility) {
+                    RawImage image = abils[i].transform.Find("Icon").GetComponentInChildren<RawImage>();
                     var temp = image.color;
                     temp.a = 0.5f;
                     image.color = temp;
+                    abils[i].transform.Find("Uses").gameObject.SetActive(false);
                 } else {
-                    RawImage image = abil.GetComponentInChildren<RawImage>();
+                    RawImage image = abils[i].transform.Find("Icon").GetComponentInChildren<RawImage>();
                     var temp = image.color;
                     temp.a = 1f;
                     image.color = temp;
+                    abils[i].transform.Find("Uses").gameObject.SetActive(true);
                 }
             }
         }
@@ -122,8 +130,8 @@ public class Abilities : MonoBehaviour {
                 ricochetCharged = false;
                 ricochetUses++;
                 StartCoroutine(Ricochet());
-
             }
+            abilChanged = true;
         }
     }
     void SetMaterial(Material material) {

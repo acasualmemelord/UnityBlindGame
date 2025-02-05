@@ -8,7 +8,6 @@ public class Winpoint : MonoBehaviour {
             GameManager.LoadWinScene();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-
         }
     }
 }

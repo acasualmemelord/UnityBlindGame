@@ -18,7 +18,7 @@ public class Settings : MonoBehaviour {
     private static float originalSoundFXVolume;
 
     private void Start() {
-
+        Cursor.lockState = CursorLockMode.None;
         // Loads saved settings or set default values
         originalBrightness = PlayerPrefs.GetFloat("Brightness", 1f);
         originalMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
