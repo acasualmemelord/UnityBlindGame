@@ -160,9 +160,9 @@ RectTransform:
   - {fileID: 905667641}
   m_Father: {fileID: 81199163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &70787230
@@ -386,10 +386,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -433,10 +433,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 70787229}
-  - {fileID: 1119194396}
   - {fileID: 1268308170}
   - {fileID: 1357968000}
   - {fileID: 1916635716}
+  - {fileID: 1119194396}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1400,8 +1400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 5, y: 5}
   startPos: 0
-  room: {fileID: 1036044429276704608, guid: 135f113f707c2bc4baf1ba8c482b5439, type: 3}
-  endRoom: {fileID: 1036044429276704608, guid: cec6332b4d9cf48428c66a0419235eb2, type: 3}
+  room: {fileID: 1036044429276704608, guid: 8358892c176124c4e8133a5131a5a07e, type: 3}
+  endRoom: {fileID: 1036044429276704608, guid: 403f63c3be82ae142a3020d8c2d96575, type: 3}
   offset: {x: 30, y: 30}
   player: {fileID: 0}
   generateNavLinks: {fileID: 649299364}
@@ -2999,9 +2999,9 @@ RectTransform:
   - {fileID: 1661595163}
   m_Father: {fileID: 81199163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -942.5, y: -510}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 17.5, y: 36.1}
   m_SizeDelta: {x: 75, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1324186998 stripped
@@ -3042,9 +3042,9 @@ RectTransform:
   - {fileID: 537815173}
   m_Father: {fileID: 81199163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -870, y: -515}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 90, y: 31.100037}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1411597585
@@ -3074,7 +3074,7 @@ RectTransform:
   m_GameObject: {fileID: 1411597585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 836023333}
@@ -3808,9 +3808,9 @@ RectTransform:
   - {fileID: 521376278}
   m_Father: {fileID: 81199163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -822.5, y: -510}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 137.5, y: 36.100037}
   m_SizeDelta: {x: 75, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1940508838
@@ -3905,6 +3905,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  abilUses: 
+  abilMaxUses: 
   meditateCooldown: {fileID: 526608484}
   meditateCost: 20
   meditateTime: 4
@@ -3915,6 +3917,8 @@ MonoBehaviour:
   forcefieldCost: 20
   forcefieldTime: 4
   forcefieldCooldownTime: 4
+  forcefieldUses: 0
+  forcefieldMaxUses: 5
   forcefield: {fileID: 6922438529585482604, guid: 1dd273ab264c4654d9bc46033416bce4, type: 3}
   forcefieldPoint: {fileID: 1324186998}
   userCamera: {fileID: 1850683118}
@@ -3930,7 +3934,7 @@ MonoBehaviour:
   ricochetPoint: {fileID: 914950659}
   playerStats: {fileID: 11400000, guid: 8f99fad92f3173443a7a16511b4a8f55, type: 2}
   playerMovement: {fileID: 0}
-  noReflection: {fileID: 2100000, guid: 42b13dcaca7bc3d4c8f64cd221cd3b5d, type: 2}
+  noReflection: {fileID: 2100000, guid: 954367a070c4b8041be3d70dbf33d0c9, type: 2}
   Reflection: {fileID: 2100000, guid: ae099258f44b9bf49b94b22f735da0a5, type: 2}
 --- !u!82 &1940508843
 AudioSource:
